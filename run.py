@@ -5,9 +5,9 @@ import time
 import sys
 import random
 from time import sleep
+from os import system, name
 
 print("""
-
  _______   __                      __           _____                      __       
 /       \ /  |                    /  |         /     |                    /  |      
 $$$$$$$  |$$ |  ______    _______ $$ |   __    $$$$$ |  ______    _______ $$ |   __ 
@@ -35,15 +35,26 @@ def create_deck():
     Creates a deck of 52 cards to be picked at random
     """
     return [
-        2, 3, 4, 5, 6, 7, 8, 9, "J", "Q", "K" "A",
-        2, 3, 4, 5, 6, 7, 8, 9, "J", "Q", "K" "A",
-        2, 3, 4, 5, 6, 7, 8, 9, "J", "Q", "K" "A",
-        2, 3, 4, 5, 6, 7, 8, 9, "J", "Q", "K" "A"
-        ]  
+        2, 3, 4, 5, 6, 7, 8, 9, "J", "Q", "K", "A",
+        2, 3, 4, 5, 6, 7, 8, 9, "J", "Q", "K", "A",
+        2, 3, 4, 5, 6, 7, 8, 9, "J", "Q", "K", "A",
+        2, 3, 4, 5, 6, 7, 8, 9, "J", "Q", "K", "A"]
 
 
 deck = create_deck()
 
+
+def clear():
+    """
+    This function will run to clear the terminal.
+    """
+    # Used information from https://www.geeksforgeeks.org/clear-screen-python/
+    # Windows
+    if name == "nt":
+        _ = system("cls")
+    # Mac and Linux
+    else:
+        _ = system("clear")
 
 
 type_text("Welcome to BlackJack")
