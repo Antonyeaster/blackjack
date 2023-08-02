@@ -15,7 +15,7 @@ def type_text(text):
     for i in text + "\n":
         sys.stdout.write(i)
         sys.stdout.flush()
-        time.sleep(0.05)
+        time.sleep(0.03)
 
 
 def get_deck():
@@ -76,41 +76,67 @@ def total_hand(hand):
 
 
 def game_rules():
-    rules = input("Would you like to view the game rules? (y/n) ").lower()
-    if rules == "y":
-        clear()
-        sleep(1)
-        type_text("The aim of the game is to get 21")
-        type_text("Or as close to 21 as possible without going over")
-        type_text("To do this, you will be dealt 2 cards")
-        type_text("The house will aslo be dealt 2 cards")
-        type_text("All number cards are equivalent to the number on the card")
-        type_text("Face cards (Jack, Queen, King) are all 10")
-        type_text("Ace is the special card, it can be either 1 or 11")
-        type_text("You can choose what you want ace to be\n")
-        type_text("When you have your cards, you can choose to hit or stand")
-        type_text("Hit will deal you another card to move closer to 21")
-        type_text("Stand will confirm you are happy with the cards you have")
-        type_text("and the house hand will be revealed")
-        type_text("Who ever is closest to 21 wins")
-        type_text("If you have 21, congrats, you have blackJack, you win")
-        type_text("If the house hand has blackJack they win\n")
-        type_text("Example cards dealt (K, 4) = 14, I could choose to hit")
-        type_text("I will be dealt another card (k, 4, 6) now I have 20")
-        type_text("Now I would choose to stand\n")
+    """
+    To be displayed at the begining of the game,
+    giving the user an option to read the rules.
+    """
+    while (True):
 
-        start = input("Would you like to start the game? (y/n) ").lower()
-        if start == "y":
+        type_text("Welcome to BlackJack")
+        rules = str(
+            input("Would you like to view the game rules? (y/n) ").lower())
+        if rules == "y":
             clear()
-            type_text("Starting game....")
-            sleep(2)
-            clear()
+            sleep(1)
+            type_text("The aim of the game is to get 21")
+            type_text("Or as close to 21 as possible without going over")
+            type_text("To do this, you will be dealt 2 cards")
+            type_text("The house will aslo be dealt 2 cards")
+            type_text("All number cards are equivalent to the number on the card")
+            type_text("Face cards (Jack, Queen, King) are all 10")
+            type_text("Ace is the special card, it can be either 1 or 11")
+            type_text("You can choose what you want ace to be\n")
+            type_text("When you have your cards, you can choose to hit or stand")
+            type_text("Hit will deal you another card to move closer to 21")
+            type_text("Stand will confirm you are happy with the cards you have")
+            type_text("and the house hand will be revealed")
+            type_text("Who ever is closest to 21 wins")
+            type_text("If you have 21, congrats, you have blackJack, you win")
+            type_text("If the house hand has blackJack they win\n")
+            type_text("Example cards dealt (K, 4) = 14, I could choose to hit")
+            type_text("I will be dealt another card (k, 4, 6) now I have 20")
+            type_text("Now I would choose to stand\n")
+
+        elif rules == "n":
+            type_text("Ok, sure! Lets get straight to it")
+
         else:
-            print("ok")
-    else:
-        print("Say Yes")
+            type_text("Invalid option selected, select y/n ")
+            continue
+
+        while (True):
+            
+            start = str(
+                input("Would you like to start the game? (y/n) ").lower())
+            if start == "y":
+                clear()
+                type_text("Starting game....")
+                sleep(2)
+                clear()
+            elif start == "n":
+                type_text("Ok, see ya next time!")
+                sleep(3)
+                clear()
+                quit()
+            else:
+                print("Invalid option selected, select y/n ")
+                continue
+
+    username = input("Whats your name? ")
+    print("Welcome", username, "lets have some fun")
+
     return rules
-     
+
 
 play_by_the_rules = game_rules()
 
@@ -123,9 +149,3 @@ def main_blackjack():
 
 
 main_blackjack()
-
-
-type_text("Welcome to BlackJack")
-
-username = input("Whats your name? ")
-print("Welcome", username, "lets have some fun")
