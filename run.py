@@ -57,6 +57,36 @@ def clear():
         _ = system("clear")
 
 
+def get_hand():
+    """
+    Prepares for a new game by emptying hands
+    """
+    return []
+
+user_hand = get_hand()
+house_hand = get_hand()
+
+
+
+def main_blackjack():
+    """
+    Main game function to run a single game, 
+    with the option to play over and over
+    """
+
+    user_score = 0
+    house_score = 0
+
+    user_cards = []
+    house_cards = []
+
+
+
+
+
+
+
+
 type_text("Welcome to BlackJack")
 
 username = input("Whats your name? ")
