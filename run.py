@@ -7,18 +7,6 @@ import random
 from time import sleep
 from os import system, name
 
-print("""
- _______   __                      __           _____                      __       
-/       \ /  |                    /  |         /     |                    /  |      
-$$$$$$$  |$$ |  ______    _______ $$ |   __    $$$$$ |  ______    _______ $$ |   __ 
-$$ |__$$ |$$ | /      \  /       |$$ |  /  |      $$ | /      \  /       |$$ |  /  |
-$$    $$< $$ | $$$$$$  |/$$$$$$$/ $$ |_/$$/  __   $$ | $$$$$$  |/$$$$$$$/ $$ |_/$$/ 
-$$$$$$$  |$$ | /    $$ |$$ |      $$   $$<  /  |  $$ | /    $$ |$$ |      $$   $$<  
-$$ |__$$ |$$ |/$$$$$$$ |$$ \_____ $$$$$$  \ $$ \__$$ |/$$$$$$$ |$$ \_____ $$$$$$  \ 
-$$    $$/ $$ |$$    $$ |$$       |$$ | $$  |$$    $$/ $$    $$ |$$       |$$ | $$  |
-$$$$$$$/  $$/  $$$$$$$/  $$$$$$$/ $$/   $$/  $$$$$$/   $$$$$$$/  $$$$$$$/ $$/   $$/
-""")
-
 
 def type_text(text):
     """
@@ -27,7 +15,7 @@ def type_text(text):
     for i in text + "\n":
         sys.stdout.write(i)
         sys.stdout.flush()
-        time.sleep(0.08)
+        time.sleep(0.05)
 
 
 def get_deck():
@@ -55,16 +43,6 @@ def clear():
     # Mac and Linux
     else:
         _ = system("clear")
-
-
-def get_hand():
-    """
-    Prepares for a new game by emptying hands
-    """
-    return []
-
-    user_hand = get_hand()
-    house_hand = get_hand()
 
 
 def dealing_random_cards(hand):
@@ -97,18 +75,51 @@ def total_hand(hand):
     return total
 
 
+def game_rules():
+    rules = input("Would you like to view the game rules? (y/n) ").lower()
+    if rules == "y":
+        clear()
+        sleep(1)
+        type_text("The aim of the game is to get 21")
+        type_text("Or as close to 21 as possible without going over")
+        type_text("To do this, you will be dealt 2 cards")
+        type_text("The house will aslo be dealt 2 cards")
+        type_text("All number cards are equivalent to the number on the card")
+        type_text("Face cards (Jack, Queen, King) are all 10")
+        type_text("Ace is the special card, it can be either 1 or 11")
+        type_text("You can choose what you want ace to be\n")
+        type_text("When you have your cards, you can choose to hit or stand")
+        type_text("Hit will deal you another card to move closer to 21")
+        type_text("Stand will confirm you are happy with the cards you have")
+        type_text("and the house hand will be revealed")
+        type_text("Who ever is closest to 21 wins")
+        type_text("If you have 21, congrats, you have blackJack, you win")
+        type_text("If the house hand has blackJack they win\n")
+        type_text("Example cards dealt (K, 4) = 14, I could choose to hit")
+        type_text("I will be dealt another card (k, 4, 6) now I have 20")
+        type_text("Now I would choose to stand\n")
+
+        start = input("Would you like to start the game? (y/n) ").lower()
+        if start == "y":
+            clear()
+            type_text("Starting game....")
+            sleep(2)
+            clear()
+        else:
+            print("ok")
+    else:
+        print("Say Yes")
+    return rules
+     
+
+play_by_the_rules = game_rules()
+
+
 def main_blackjack():
     """
-    Main game function to run a single game, 
+    Main game function to run a single game,
     with the option to play over and over
     """
-
-
-    user_score = 0
-    house_score = 0
-
-    user_cards = []
-    house_cards = []
 
 
 main_blackjack()
