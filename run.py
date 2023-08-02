@@ -67,6 +67,20 @@ user_hand = get_hand()
 house_hand = get_hand()
 
 
+def dealing_random_cards(card):
+    """
+    Deals a random card from the deck and removes 
+    the card from the deck
+    """
+    delt = random.choice(deck)
+    card.append(delt)
+    deck.remove(delt)
+
+
+def total_hand():
+    
+
+
 
 def main_blackjack():
     """
