@@ -22,8 +22,26 @@ def mix_up():
     random.shuffle(cards)
 
 
+def dealt(num):
+    """
+    To select 2 cards from the deck and be dealt to 
+    the player and computer.
+    """
+    cards_to_be_dealt = []
+    for i in range(num):
+        card = cards.pop()
+        cards_to_be_dealt.append(card)
+    return cards_to_be_dealt
+
+
 mix_up()
-print(cards)
+cards_to_be_dealt = dealt(2)
+card = cards_to_be_dealt[0]
+number_or_face_card = card[1]
+
+if number_or_face_card == "A":
+    value = 11
+print(cards_to_be_dealt)
 
 
 def type_text(text):
