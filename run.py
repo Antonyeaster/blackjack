@@ -14,6 +14,15 @@ for suit in suits:
     for rank in ranks:
         cards.append([suit, rank])
 
+
+def mix_up():
+    """
+    Shuffle all cards in the deck.
+    """
+    random.shuffle(cards)
+
+
+mix_up()
 print(cards)
 
 
