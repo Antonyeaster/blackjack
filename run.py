@@ -93,6 +93,50 @@ class CardsInHand:
         """
         self.cards.extend(card_list)
 
+    def get_hand_value(self):
+        """
+        Get the value of the hand to inform the player.
+        """
+        self.value = 0
+        ace_included = False
+        for card in self.cards:
+            card_amount = int(card.card_value["value"])
+            self.value += card_amount
+            if card.card_value["card_value"] == "A":
+                ace_included = True
+
+        if ace_included and self.value > 21:
+            self.value -= 10
+
+    def total(self):
+        """
+        Return the total value in the hand.
+        """
+        self.get_hand_value()
+        return self.value
+
+    def equals_blackjack(self):
+        """
+        To establish if 21 has been achieved and blackjack happens
+        """
+        return self.total() == 21
+
+    def display_hands(self, show_hidden_cards=False):
+        """
+        Display the players hand and the house hand.
+        """
+        print(f'''{"house's" if self.house else "Your"} hand: ''')
+        for index, card in enumerate(self.cards):
+            if index == 1 and self.house and not show_hidden_cards and not \
+                    self.equals_blackjack():
+                print("X")
+            else:
+                print(card)
+
+        if not self.house:
+            print("value:", self.total())
+        print()
+
 
 def type_text(text):
     """
@@ -110,4 +154,4 @@ deck.mix_up()
 
 hand = CardsInHand()
 hand.new_card(deck.dealt(2))
-print(hand.cards[0], hand.cards[1])
+hand.display_hands()
