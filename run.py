@@ -9,12 +9,12 @@ from os import system, name
 
 class Deck:
     """
-    Creates an instance of the deck
+    Creates instances of the deck
     """
     def __init__(self):
-
-
-
+        """
+        
+        """
         self.cards = []
         suits = ["Hearts", "Spade", "Diamonds", "Clubs"]
         ranks = [
@@ -37,11 +37,24 @@ class Deck:
                 self.cards.append([suit, rank])
 
 
+class CardType:
+    """
+    Create instances for the different types of cards
+    """
+    def __init__(self, suit, rank):
+        """
+        
+        """
+        self.suit = suit
+        self.rank = rank
+
+
 def mix_up(self):
     """
     Shuffle all cards in the deck.
     """
-    random.shuffle(self.cards)
+    if len(self.card) > 1:
+        random.shuffle(self.cards)
 
 
 def dealt(num):
@@ -51,8 +64,9 @@ def dealt(num):
     """
     cards_to_be_dealt = []
     for i in range(num):
-        card = self.cards.pop()
-        cards_to_be_dealt.append(card)
+        if len(self.card) > 0:
+            card = self.cards.pop()
+            cards_to_be_dealt.append(card)
     return cards_to_be_dealt
 
 
