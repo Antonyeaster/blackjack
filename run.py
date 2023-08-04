@@ -7,33 +7,41 @@ import random
 from time import sleep
 from os import system, name
 
-cards = []
-suits = ["Hearts", "Spade", "Diamonds", "Clubs"]
-ranks = [
-    {"rank": "A", "value": 11},
-    {"rank": "2", "value": 2},
-    {"rank": "3", "value": 3},
-    {"rank": "4", "value": 4},
-    {"rank": "5", "value": 5},
-    {"rank": "6", "value": 6},
-    {"rank": "7", "value": 7},
-    {"rank": "8", "value": 8},
-    {"rank": "9", "value": 9},
-    {"rank": "10", "value": 10},
-    {"rank": "J", "value": 10},
-    {"rank": "Q", "value": 10},
-    {"rank": "K", "value": 10},        
-]
-for suit in suits:
-    for rank in ranks:
-        cards.append([suit, rank])
+class Deck:
+    """
+    Creates an instance of the deck
+    """
+    def __init__(self):
 
 
-def mix_up():
+
+        self.cards = []
+        suits = ["Hearts", "Spade", "Diamonds", "Clubs"]
+        ranks = [
+            {"rank": "A", "value": 11},
+            {"rank": "2", "value": 2},
+            {"rank": "3", "value": 3},
+            {"rank": "4", "value": 4},
+            {"rank": "5", "value": 5},
+            {"rank": "6", "value": 6},
+            {"rank": "7", "value": 7},
+            {"rank": "8", "value": 8},
+            {"rank": "9", "value": 9},
+            {"rank": "10", "value": 10},
+            {"rank": "J", "value": 10},
+            {"rank": "Q", "value": 10},
+            {"rank": "K", "value": 10},        
+        ]
+        for suit in suits:
+            for rank in ranks:
+                self.cards.append([suit, rank])
+
+
+def mix_up(self):
     """
     Shuffle all cards in the deck.
     """
-    random.shuffle(cards)
+    random.shuffle(self.cards)
 
 
 def dealt(num):
@@ -43,14 +51,14 @@ def dealt(num):
     """
     cards_to_be_dealt = []
     for i in range(num):
-        card = cards.pop()
+        card = self.cards.pop()
         cards_to_be_dealt.append(card)
     return cards_to_be_dealt
 
 
 mix_up()
 card = dealt(1)[0]
-print(card)
+print(card[1]["value"])
 
 
 def type_text(text):
