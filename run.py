@@ -7,13 +7,15 @@ import random
 from time import sleep
 from os import system, name
 
+
 class Deck:
     """
     Creates instances of the deck
     """
     def __init__(self):
         """
-        
+        To be able to pull any suit or value from the deck and into
+        the player or computers hand.
         """
         self.cards = []
         suits = ["Hearts", "Spade", "Diamonds", "Clubs"]
@@ -30,11 +32,11 @@ class Deck:
             {"rank": "10", "value": 10},
             {"rank": "J", "value": 10},
             {"rank": "Q", "value": 10},
-            {"rank": "K", "value": 10},        
-        ]
+            {"rank": "K", "value": 10},
+            ]
         for suit in suits:
             for rank in ranks:
-                self.cards.append([suit, rank])
+                self.cards.append(CardType(suit, rank))
 
 
 class CardType:
@@ -43,10 +45,16 @@ class CardType:
     """
     def __init__(self, suit, rank):
         """
-        
+        To retrieve the suit and rank from the dictionary.
         """
         self.suit = suit
         self.rank = rank
+
+    def __str__(self):
+        """
+        To return the string of the rank and suit.
+        """
+        return f"{self.rank['rank']} of {self.suit}"
 
 
 def mix_up(self):
@@ -57,9 +65,9 @@ def mix_up(self):
         random.shuffle(self.cards)
 
 
-def dealt(num):
+def dealt(self, num):
     """
-    To select 2 cards from the deck and be dealt to 
+    To select 2 cards from the deck and be dealt to
     the player and computer.
     """
     cards_to_be_dealt = []
@@ -68,11 +76,6 @@ def dealt(num):
             card = self.cards.pop()
             cards_to_be_dealt.append(card)
     return cards_to_be_dealt
-
-
-mix_up()
-card = dealt(1)[0]
-print(card[1]["value"])
 
 
 def type_text(text):
