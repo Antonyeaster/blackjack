@@ -200,6 +200,24 @@ class PlayGame:
             if self.who_wins(player_hand, house_hand):
                 continue
 
+            player_hand_amount = player_hand.total()
+            house_hand_amount = house_hand.total()
+
+            while house_hand_amount < 17:
+                house_hand.new_card(deck.dealt(1))
+                house_hand_amount = house_hand.total()
+
+            house_hand.display_hands(show_hidden_cards=True)
+
+            if self.who_wins(player_hand, house_hand):
+                continue
+
+            print("That's the end of the game, the final results are...")
+            print("Your hand is:", player_hand_amount)
+            print("House hand is:", house_hand_amount)
+
+            if self.who_wins(player_hand, house_hand, True):
+
     def who_wins(self, player_hand, house_hand, game_over=False):
         """
         To check the winner against various different outcomes.
@@ -208,18 +226,18 @@ class PlayGame:
             if house_hand.get_hand_value() > 21:
                 print("The House has gone bust! You win this round.")
                 return True
-            elif player_hand.get_hand_value() > 21:
-                print("Oops! You've bust! The House wins this round.")
-                return True
-            elif house_hand.equals_blackjack():
-                print("The House has Blackjack, They win, better luck next time")
-                return True
-            elif player_hand.equals_blackjack():
-                print("WOW, you've got Blackjack, you win")
-                return True
-            elif player_hand.equals_blackjack() and house_hand.equals_blackjack():
-                print("Shame, that was close but it's a draw this time")
-                return True
+        elif player_hand.get_hand_value() > 21:
+            print("Oops! You've bust! The House wins this round.")
+            return True
+        elif house_hand.equals_blackjack():
+            print("The House has Blackjack, They win, better luck next time")
+            return True
+        elif player_hand.equals_blackjack():
+            print("WOW, you've got Blackjack, you win")
+            return True
+        elif player_hand.equals_blackjack() and house_hand.equals_blackjack():
+            print("Shame, that was close but it's a draw this time")
+            return True
         else:
             if house_hand.get_hand_value() > player_hand.get_hand_value():
                 print("The House wins this round!")
@@ -227,7 +245,7 @@ class PlayGame:
                 print("It's a draw")
             else:
                 print("Great job, you win!")
-            return True
+                return True
         return False
 
 
