@@ -161,7 +161,7 @@ class PlayGame:
         while amount_of_games <= 0:
             try:
                 amount_of_games = int(input(
-                        "How many games would you like to play? "))
+                    "How many games would you like to play? "))
             except ValueError:
                 print("Thats not a number, please try again")
 
@@ -184,11 +184,51 @@ class PlayGame:
             player_hand.display_hands()
             house_hand.display_hands()
 
-    def Who_wins():
+            if self.who_wins(player_hand, house_hand):
+                continue
+
+            decision = ""
+            while player_hand.get_hand_value() < 21 and decision not in ["s", "stand"]:
+                decision = input("Would you like to Hit or Stand: ").lower
+                print()
+                while decision not in ["hit", "stand", "h", "s"]:
+                    print("Options available are 'Hit or 'Stand or (h/s)")
+                if decision in ["hit", "h"]:
+                    player_hand.new_card(deck.dealt(1))
+                    player_hand.display_hands()
+
+            if self.who_wins(player_hand, house_hand):
+                continue
+
+    def who_wins(self, player_hand, house_hand, game_over=False):
         """
         To check the winner against various different outcomes.
         """
-        
+        if not game_over:
+            if house_hand.get_hand_value() > 21:
+                print("The House has gone bust! You win this round.")
+                return True
+            elif player_hand.get_hand_value() > 21:
+                print("Oops! You've bust! The House wins this round.")
+                return True
+            elif house_hand.equals_blackjack():
+                print("The House has Blackjack, They win, better luck next time")
+                return True
+            elif player_hand.equals_blackjack():
+                print("WOW, you've got Blackjack, you win")
+                return True
+            elif player_hand.equals_blackjack() and house_hand.equals_blackjack():
+                print("Shame, that was close but it's a draw this time")
+                return True
+        else:
+            if house_hand.get_hand_value() > player_hand.get_hand_value():
+                print("The House wins this round!")
+            elif house_hand.get_hand_value() == player_hand.get_hand_value():
+                print("It's a draw")
+            else:
+                print("Great job, you win!")
+            return True
+        return False
 
 
 go = PlayGame()
