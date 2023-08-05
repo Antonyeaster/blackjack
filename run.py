@@ -12,7 +12,6 @@ class Deck:
     """
     Creates instances of the deck
     """
-
     def __init__(self):
         """
         To be able to pull any suit or value from the deck and into
@@ -102,11 +101,13 @@ class CardsInHand:
         for card in self.cards:
             card_amount = int(card.card_value["value"])
             self.value += card_amount
+
             if card.card_value["card_value"] == "A":
                 ace_included = True
 
         if ace_included and self.value > 21:
             self.value -= 10
+        return card_amount
 
     def total(self):
         """
@@ -189,10 +190,11 @@ class PlayGame:
 
             decision = ""
             while player_hand.get_hand_value() < 21 and decision not in ["s", "stand"]:
-                decision = input("Would you like to Hit or Stand: ").lower
+                decision = input("Would you like to Hit or Stand:").lower
                 print()
                 while decision not in ["hit", "stand", "h", "s"]:
-                    print("Options available are 'Hit or 'Stand or (h/s)")
+                    decision = input("Options available are Hit or Stand or (h/s)").lower()
+                    print()
                 if decision in ["hit", "h"]:
                     player_hand.new_card(deck.dealt(1))
                     player_hand.display_hands()
@@ -216,8 +218,8 @@ class PlayGame:
             print("Your hand is:", player_hand_amount)
             print("House hand is:", house_hand_amount)
 
-            if self.who_wins(player_hand, house_hand, True):
-
+            self.who_wins(player_hand, house_hand, True)
+            
     def who_wins(self, player_hand, house_hand, game_over=False):
         """
         To check the winner against various different outcomes.
@@ -226,18 +228,18 @@ class PlayGame:
             if house_hand.get_hand_value() > 21:
                 print("The House has gone bust! You win this round.")
                 return True
-        elif player_hand.get_hand_value() > 21:
-            print("Oops! You've bust! The House wins this round.")
-            return True
-        elif house_hand.equals_blackjack():
-            print("The House has Blackjack, They win, better luck next time")
-            return True
-        elif player_hand.equals_blackjack():
-            print("WOW, you've got Blackjack, you win")
-            return True
-        elif player_hand.equals_blackjack() and house_hand.equals_blackjack():
-            print("Shame, that was close but it's a draw this time")
-            return True
+            elif player_hand.get_hand_value() > 21:
+                print("Oops! You've bust! The House wins this round.")
+                return True
+            elif house_hand.equals_blackjack():
+                print("The House has Blackjack, They win, better luck next time")
+                return True
+            elif player_hand.equals_blackjack():
+                print("WOW, you've got Blackjack, you win")
+                return True
+            elif player_hand.equals_blackjack() and house_hand.equals_blackjack():
+                print("Shame, that was close but it's a draw this time")
+                return True
         else:
             if house_hand.get_hand_value() > player_hand.get_hand_value():
                 print("The House wins this round!")
@@ -245,7 +247,7 @@ class PlayGame:
                 print("It's a draw")
             else:
                 print("Great job, you win!")
-                return True
+            return True
         return False
 
 
