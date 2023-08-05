@@ -149,9 +149,47 @@ def type_text(text):
         time.sleep(4)
 
 
-deck = Deck()
-deck.mix_up()
+class PlayGame:
 
-hand = CardsInHand()
-hand.new_card(deck.dealt(2))
-hand.display_hands()
+    def games(self):
+        """
+        To run the main game in a loop until player chooses to stop.
+        """
+        amount_of_games = 0
+        game_number = 0
+
+        while amount_of_games <= 0:
+            try:
+                amount_of_games = int(input(
+                        "How many games would you like to play? "))
+            except ValueError:
+                print("Thats not a number, please try again")
+
+        while game_number < amount_of_games:
+            game_number += 1
+
+            deck = Deck()
+            deck.mix_up()
+            player_hand = CardsInHand()
+            house_hand = CardsInHand(house_hand=True)
+
+            for i in range(2):
+                player_hand.new_card(deck.dealt(1))
+                house_hand.new_card(deck.dealt(1))
+
+            print()
+            print("-" * 40)
+            print(f"You are on game {game_number} of {amount_of_games}")
+            print("-" * 40)
+            player_hand.display_hands()
+            house_hand.display_hands()
+
+    def Who_wins():
+        """
+        To check the winner against various different outcomes.
+        """
+        
+
+
+go = PlayGame()
+go.games()
