@@ -76,6 +76,9 @@ class CardType:
         """
         return f"{self.card_value['card_value']} of {self.suit}"
 
+    def __repr__(self):
+        return f"CardType('{self.suit}', '{self.card_value}')"
+
 
 class CardsInHand:
     def __init__(self, house_hand=False):
@@ -98,16 +101,15 @@ class CardsInHand:
         """
         self.value = 0
         ace_included = False
+               
         for card in self.cards:
             card_amount = int(card.card_value["value"])
             self.value += card_amount
-
             if card.card_value["card_value"] == "A":
                 ace_included = True
 
         if ace_included and self.value > 21:
             self.value -= 10
-        return card_amount
 
     def total(self):
         """
@@ -147,7 +149,7 @@ def type_text(text):
     for i in text + "\n":
         sys.stdout.write(i)
         sys.stdout.flush()
-        time.sleep(4)
+        time.sleep(0.1)
 
 
 class PlayGame:
@@ -189,8 +191,8 @@ class PlayGame:
                 continue
 
             decision = ""
-            while player_hand.get_hand_value() < 21 and decision not in ["s", "stand"]:
-                decision = input("Would you like to Hit or Stand:").lower
+            while player_hand.total() < 21 and decision not in ["s", "stand"]:
+                decision = input("Would you like to Hit or Stand:").lower()
                 print()
                 while decision not in ["hit", "stand", "h", "s"]:
                     decision = input("Options available are Hit or Stand or (h/s)").lower()
@@ -214,7 +216,7 @@ class PlayGame:
             if self.who_wins(player_hand, house_hand):
                 continue
 
-            print("That's the end of the game, the final results are...")
+            type_text("That's the end of the game, the final results are...")
             print("Your hand is:", player_hand_amount)
             print("House hand is:", house_hand_amount)
 
@@ -225,11 +227,11 @@ class PlayGame:
         To check the winner against various different outcomes.
         """
         if not game_over:
-            if house_hand.get_hand_value() > 21:
-                print("The House has gone bust! You win this round.")
-                return True
-            elif player_hand.get_hand_value() > 21:
+            if player_hand.total() > 21:
                 print("Oops! You've bust! The House wins this round.")
+                return True
+            elif house_hand.total() > 21:
+                print("The House has gone bust! You win this round.")
                 return True
             elif house_hand.equals_blackjack():
                 print("The House has Blackjack, They win, better luck next time")
@@ -241,9 +243,9 @@ class PlayGame:
                 print("Shame, that was close but it's a draw this time")
                 return True
         else:
-            if house_hand.get_hand_value() > player_hand.get_hand_value():
+            if house_hand.total() > player_hand.total():
                 print("The House wins this round!")
-            elif house_hand.get_hand_value() == player_hand.get_hand_value():
+            elif house_hand.total() == player_hand.total():
                 print("It's a draw")
             else:
                 print("Great job, you win!")
