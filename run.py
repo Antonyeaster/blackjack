@@ -253,5 +253,14 @@ class PlayGame:
         return False
 
 
+def game_rules():
+    rules = input("Would you like to read the rules? yes or no ").lower()
+    if rules == "y":
+        type_text("The rules are simple, hit 21")
+    else:
+        type_text("Ok, lets get straight to it!")
+
+
+game_rules()
 go = PlayGame()
 go.games()
