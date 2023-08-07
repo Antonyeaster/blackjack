@@ -171,7 +171,7 @@ class PlayGame:
         while game_number < amount_of_games:
             game_number += 1
 
-            deck = Deck()   
+            deck = Deck()
             deck.mix_up()
             player_hand = CardsInHand()
             house_hand = CardsInHand(house_hand=True)
@@ -219,14 +219,18 @@ class PlayGame:
             type_text("That's the end of the game, the final results are...")
             print("Your hand is:", player_hand_amount)
             print("House hand is:", house_hand_amount)
-
-            self.who_wins(player_hand, house_hand, True)
             
+            self.who_wins(player_hand, house_hand, True)
+            play_again()
+
     def who_wins(self, player_hand, house_hand, game_over=False):
         """
         To check the winner against various different outcomes.
         """
         global house_score, player_score
+
+        player_hand_amount = player_hand.total()
+        house_hand_amount = house_hand.total()
 
         player_score = 0
         house_score = 0
@@ -234,22 +238,26 @@ class PlayGame:
         if not game_over:
             if player_hand.total() > 21:
                 type_text("Oops! You've bust! The House wins this round.")
-                house_score += 1
+                print("Your hand was:", player_hand_amount)
+                print("House hand was:", house_hand_amount)
                 sleep(4)
                 return True
             elif house_hand.total() > 21:
                 type_text("The House has gone bust! You win this round.")
-                player_score += 1
+                print("Your hand was:", player_hand_amount)
+                print("House hand was:", house_hand_amount)
                 sleep(4)
                 return True
             elif house_hand.equals_blackjack():
                 type_text("The House has Blackjack, They win, better luck next time")
-                house_score += 1
+                print("Your hand was:", player_hand_amount)
+                print("House hand was:", house_hand_amount)
                 sleep(4)
                 return True
             elif player_hand.equals_blackjack():
                 type_text("WOW, you've got Blackjack, you win")
-                player_score += 1
+                print("Your hand was:", player_hand_amount)
+                print("House hand was:", house_hand_amount)
                 sleep(4)
                 return True
             elif player_hand.equals_blackjack() and house_hand.equals_blackjack():
@@ -259,14 +267,18 @@ class PlayGame:
         else:
             if house_hand.total() > player_hand.total():
                 type_text("The House wins this round!")
-                house_score += 1
+                print("Your hand was:", player_hand_amount)
+                print("House hand was:", house_hand_amount)
                 sleep(4)
             elif house_hand.total() == player_hand.total():
                 type_text("It's a draw")
+                print("Your hand was:", player_hand_amount)
+                print("House hand was:", house_hand_amount)
                 sleep(4)
             else:
                 type_text("Great job, you win!")
-                player_score += 1
+                print("Your hand was:", player_hand_amount)
+                print("House hand was:", house_hand_amount)
                 sleep(4)
             return True
         return False
@@ -308,12 +320,27 @@ def clear():
         _ = system("clear")
 
 
+def play_again():
+    """
+    To give the user a chance to play agian.
+    """
+    type_text("Would you like to play again? (Y/N)")
+    go_again = str(input("")).lower()
 
-player_score = 0
-house_score = 0
+    if go_again == "y":
+        clear()
+        type_text("Awesome, new game loading....")
+        sleep(2)
+        run.games()
+    elif go_again == "n":
+        type_text("Well it was nice to meet you, thanks for playing.")
+        exit()
+    else:
+        type_text("Please enter Y for yes or N for n")
 
 
 welcome()
 game_rules()
-go = PlayGame()
-go.games()
+run = PlayGame()
+run.games()
+play_again()
