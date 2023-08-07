@@ -171,7 +171,7 @@ class PlayGame:
         while game_number < amount_of_games:
             game_number += 1
 
-            deck = Deck()
+            deck = Deck()   
             deck.mix_up()
             player_hand = CardsInHand()
             house_hand = CardsInHand(house_hand=True)
@@ -226,29 +226,48 @@ class PlayGame:
         """
         To check the winner against various different outcomes.
         """
+        global house_score, player_score
+
+        player_score = 0
+        house_score = 0
+
         if not game_over:
             if player_hand.total() > 21:
-                print("Oops! You've bust! The House wins this round.")
+                type_text("Oops! You've bust! The House wins this round.")
+                house_score += 1
+                sleep(4)
                 return True
             elif house_hand.total() > 21:
-                print("The House has gone bust! You win this round.")
+                type_text("The House has gone bust! You win this round.")
+                player_score += 1
+                sleep(4)
                 return True
             elif house_hand.equals_blackjack():
-                print("The House has Blackjack, They win, better luck next time")
+                type_text("The House has Blackjack, They win, better luck next time")
+                house_score += 1
+                sleep(4)
                 return True
             elif player_hand.equals_blackjack():
-                print("WOW, you've got Blackjack, you win")
+                type_text("WOW, you've got Blackjack, you win")
+                player_score += 1
+                sleep(4)
                 return True
             elif player_hand.equals_blackjack() and house_hand.equals_blackjack():
-                print("Shame, that was close but it's a draw this time")
+                type_text("Shame, that was close but it's a draw this time")
+                sleep(4)
                 return True
         else:
             if house_hand.total() > player_hand.total():
-                print("The House wins this round!")
+                type_text("The House wins this round!")
+                house_score += 1
+                sleep(4)
             elif house_hand.total() == player_hand.total():
-                print("It's a draw")
+                type_text("It's a draw")
+                sleep(4)
             else:
-                print("Great job, you win!")
+                type_text("Great job, you win!")
+                player_score += 1
+                sleep(4)
             return True
         return False
 
@@ -287,6 +306,11 @@ def clear():
     # For a Mac os
     else:
         _ = system("clear")
+
+
+
+player_score = 0
+house_score = 0
 
 
 welcome()
