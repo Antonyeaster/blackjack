@@ -253,22 +253,23 @@ class PlayGame:
         return False
 
 
-def welcome():
+def welcome(username):
     type_text("Welcome to Blackjack")
     type_text("Lets take some time to get to know eachother")
     username = input("Whats your name? ")
     type_text(f"Hi {username} my names Jack, nice to meet you")
+    type_text(f"So {username}, would you like to read the rules?")
 
 
-def game_rules():
-    rules = str(input(f"So 'username' would you like to read the rules? yes or no ")).lower()
-    if rules == "y":
+def game_rules(username):
+    read_rules = str(input("Y for yes or N for no? ")).lower()
+    if read_rules == "y":
         type_text("The rules are simple, hit 21")
     else:
         type_text("Ok, lets get straight to it!")
 
 
-welcome()
-game_rules()
+welcome("username")
+game_rules("username")
 go = PlayGame()
 go.games()
