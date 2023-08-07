@@ -253,7 +253,11 @@ class PlayGame:
         return False
 
 
-def welcome(username):
+def welcome():
+    """
+    A few typed out lines to welcome the user
+    and retrieve their username.
+    """
     type_text("Welcome to Blackjack")
     type_text("Lets take some time to get to know eachother")
     username = input("Whats your name? ")
@@ -261,7 +265,11 @@ def welcome(username):
     type_text(f"So {username}, would you like to read the rules?")
 
 
-def game_rules(username):
+def game_rules():
+    """
+    To give the user the chance to read the rules
+    or just go straight into the game.
+    """
     read_rules = str(input("Y for yes or N for no? ")).lower()
     if read_rules == "y":
         type_text("The rules are simple, hit 21")
@@ -269,7 +277,19 @@ def game_rules(username):
         type_text("Ok, lets get straight to it!")
 
 
-welcome("username")
-game_rules("username")
+def clear():
+    """
+    To clear the terminal for a more focused approach.
+    """
+    # For a Windows os
+    if name == "nt":
+        _ = system("cls")
+    # For a Mac os
+    else:
+        _ = system("clear")
+
+
+welcome()
+game_rules()
 go = PlayGame()
 go.games()
