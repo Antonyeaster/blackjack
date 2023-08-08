@@ -27,13 +27,15 @@ class Deck:
     """
     Creates instances of the deck
     """
+
     def __init__(self):
         """
         To be able to pull any suit or value from the deck and into
         the player or computers hand.
         """
         self.cards = []
-        suits = ["Hearts", "Spades", "Diamonds", "Clubs"]
+        suits = ["Hearts \U00002665", "Spades \U00002660",
+                 "Diamonds \U00002666", "Clubs \U00002663"]
         card_values = [
             {"card_value": "A", "value": 11},
             {"card_value": "2", "value": 2},
@@ -116,7 +118,7 @@ class CardsInHand:
         """
         self.value = 0
         ace_included = False
-               
+
         for card in self.cards:
             card_amount = int(card.card_value["value"])
             self.value += card_amount
@@ -180,6 +182,7 @@ class PlayGame:
             try:
                 amount_of_games = int(input(
                     "How many games would you like to play? "))
+                clear()
             except ValueError:
                 print("Thats not a number, please try again")
 
@@ -196,9 +199,12 @@ class PlayGame:
                 house_hand.new_card(deck.dealt(1))
 
             print()
-            print("-" * 40)
+            print("\U00002665 \U00002660 \U00002666 \U00002663 " * 5)
+            print()
             print(f"You are on game {game_number} of {amount_of_games}")
-            print("-" * 40)
+            print()
+            print("\U00002665 \U00002660 \U00002666 \U00002663 " * 5)
+            print()
             player_hand.display_hands()
             house_hand.display_hands()
 
@@ -210,7 +216,8 @@ class PlayGame:
                 decision = input("Would you like to Hit or Stand:").lower()
                 print()
                 while decision not in ["hit", "stand", "h", "s"]:
-                    decision = input("Options available are Hit or Stand or (h/s)").lower()
+                    decision = input(
+                        "Options available are Hit or Stand or (h/s)").lower()
                     print()
                 if decision in ["hit", "h"]:
                     player_hand.new_card(deck.dealt(1))
@@ -229,15 +236,13 @@ class PlayGame:
 
             if self.who_wins(player_hand, house_hand):
                 continue
-            
+
             self.who_wins(player_hand, house_hand, True)
-            
+
     def who_wins(self, player_hand, house_hand, game_over=False):
         """
         To check the winner against various different outcomes.
         """
-        global house_score, player_score
-
         player_hand_amount = player_hand.total()
         house_hand_amount = house_hand.total()
 
@@ -246,28 +251,34 @@ class PlayGame:
                 type_text("Oops! You've bust! The House wins this round.")
                 print("Your hand was:", player_hand_amount)
                 print("House hand was:", house_hand_amount)
+                print()
                 sleep(4)
                 return True
             elif house_hand.total() > 21:
                 type_text("The House has gone bust! You win this round.")
                 print("Your hand was:", player_hand_amount)
                 print("House hand was:", house_hand_amount)
+                print()
                 sleep(4)
                 return True
             elif house_hand.equals_blackjack():
-                type_text("The House has Blackjack, They win, better luck next time")
+                type_text(
+                    "The House has Blackjack, They win, better luck next time")
                 print("Your hand was:", player_hand_amount)
                 print("House hand was:", house_hand_amount)
+                print()
                 sleep(4)
                 return True
             elif player_hand.equals_blackjack():
                 type_text("WOW, you've got Blackjack, you win")
                 print("Your hand was:", player_hand_amount)
                 print("House hand was:", house_hand_amount)
+                print()
                 sleep(4)
                 return True
             elif player_hand.equals_blackjack() and house_hand.equals_blackjack():
                 type_text("Shame, that was close but it's a draw this time")
+                print()
                 sleep(4)
                 return True
         else:
@@ -275,16 +286,19 @@ class PlayGame:
                 type_text("The House wins this round!")
                 print("Your hand was:", player_hand_amount)
                 print("House hand was:", house_hand_amount)
+                print()
                 sleep(4)
             elif house_hand.total() == player_hand.total():
                 type_text("It's a draw")
                 print("Your hand was:", player_hand_amount)
                 print("House hand was:", house_hand_amount)
+                print()
                 sleep(4)
             else:
                 type_text("Great job, you win!")
                 print("Your hand was:", player_hand_amount)
                 print("House hand was:", house_hand_amount)
+                print()
                 sleep(4)
             return True
         return False
@@ -296,7 +310,7 @@ def welcome():
     and retrieve their name.
     """
     type_text("Welcome to Blackjack")
-    type_text("Lets take some time to get to know eachother")
+    type_text("Lets take some time to get to know eachother \U0001F4A5")
     name = input("Whats your name? ")
     type_text(f"Hi {name} my names Jack, nice to meet you")
     type_text(f"So {name}, would you like to read the rules?")
@@ -333,6 +347,7 @@ def play_again():
             exit()
         else:
             type_text("Please enter Y for yes or N for n")
+            continue
 
 
 def clear():
