@@ -204,7 +204,6 @@ class PlayGame:
             if self.who_wins(player_hand, house_hand):
                 continue
 
-            player_hand_amount = player_hand.total()
             house_hand_amount = house_hand.total()
 
             while house_hand_amount < 17:
@@ -215,14 +214,9 @@ class PlayGame:
 
             if self.who_wins(player_hand, house_hand):
                 continue
-
-            type_text("That's the end of the game, the final results are...")
-            print("Your hand is:", player_hand_amount)
-            print("House hand is:", house_hand_amount)
             
             self.who_wins(player_hand, house_hand, True)
-            play_again()
-
+            
     def who_wins(self, player_hand, house_hand, game_over=False):
         """
         To check the winner against various different outcomes.
@@ -287,13 +281,13 @@ class PlayGame:
 def welcome():
     """
     A few typed out lines to welcome the user
-    and retrieve their username.
+    and retrieve their name.
     """
     type_text("Welcome to Blackjack")
     type_text("Lets take some time to get to know eachother")
-    username = input("Whats your name? ")
-    type_text(f"Hi {username} my names Jack, nice to meet you")
-    type_text(f"So {username}, would you like to read the rules?")
+    name = input("Whats your name? ")
+    type_text(f"Hi {name} my names Jack, nice to meet you")
+    type_text(f"So {name}, would you like to read the rules?")
 
 
 def game_rules():
@@ -306,18 +300,6 @@ def game_rules():
         type_text("The rules are simple, hit 21")
     else:
         type_text("Ok, lets get straight to it!")
-
-
-def clear():
-    """
-    To clear the terminal for a more focused approach.
-    """
-    # For a Windows os
-    if name == "nt":
-        _ = system("cls")
-    # For a Mac os
-    else:
-        _ = system("clear")
 
 
 def play_again():
@@ -337,6 +319,18 @@ def play_again():
         exit()
     else:
         type_text("Please enter Y for yes or N for n")
+
+
+def clear():
+    """
+    To clear the terminal for a more focused approach.
+    """
+    # For a Windows os
+    if name == "nt":
+        _ = system("cls")
+    # For a Mac os
+    else:
+        _ = system("clear")
 
 
 welcome()
