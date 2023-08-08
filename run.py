@@ -15,13 +15,11 @@ print("""
 | '--'B| '--'L| '--'A| '--'C| '--'K|
 `------`------`------`------`------'
 .------.------.------.------.       
-|J.--. |A.--. |C.--. |K.--. |       
-| :(): | (\/) | :/\: | :/\: |       
-| ()() | :\/: | :\/: | :\/: |       
-| '--'J| '--'A| '--'C| '--'K|       
-`------`------`------`------'       
-
-
+|J.--. |A.--. |C.--. |K.--. |      
+| :(): | (\/) | :/\: | :/\: |      
+| ()() | :\/: | :\/: | :\/: |      
+| '--'J| '--'A| '--'C| '--'K|     
+`------`------`------`------'
 """)
 
 
@@ -35,7 +33,7 @@ class Deck:
         the player or computers hand.
         """
         self.cards = []
-        suits = ["Hearts", "Spade", "Diamonds", "Clubs"]
+        suits = ["Hearts", "Spades", "Diamonds", "Clubs"]
         card_values = [
             {"card_value": "A", "value": 11},
             {"card_value": "2", "value": 2},
@@ -166,7 +164,7 @@ def type_text(text):
     for i in text + "\n":
         sys.stdout.write(i)
         sys.stdout.flush()
-        time.sleep(0.1)
+        time.sleep(0.01)
 
 
 class PlayGame:
@@ -242,9 +240,6 @@ class PlayGame:
 
         player_hand_amount = player_hand.total()
         house_hand_amount = house_hand.total()
-
-        player_score = 0
-        house_score = 0
 
         if not game_over:
             if player_hand.total() > 21:
@@ -323,19 +318,21 @@ def play_again():
     """
     To give the user a chance to play agian.
     """
-    type_text("Would you like to play again? (Y/N)")
-    go_again = str(input("")).lower()
+    re_run = True
+    while re_run:
+        type_text("Would you like to play again? (Y/N)")
+        go_again = str(input("")).lower()
 
-    if go_again == "y":
-        clear()
-        type_text("Awesome, new game loading....")
-        sleep(2)
-        run.games()
-    elif go_again == "n":
-        type_text("Well it was nice to meet you, thanks for playing.")
-        exit()
-    else:
-        type_text("Please enter Y for yes or N for n")
+        if go_again == "y":
+            clear()
+            type_text("Awesome, new game loading....")
+            sleep(2)
+            run.games()
+        elif go_again == "n":
+            type_text("Well it was nice to meet you, thanks for playing.")
+            exit()
+        else:
+            type_text("Please enter Y for yes or N for n")
 
 
 def clear():
