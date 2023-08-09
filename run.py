@@ -312,6 +312,8 @@ def welcome():
     type_text("Welcome to Blackjack")
     type_text("Lets take some time to get to know eachother \U0001F4A5")
     name = input("Whats your name? ")
+    sleep(0.5)
+    clear()
     type_text(f"Hi {name} my names Jack, nice to meet you")
     type_text(f"So {name}, would you like to read the rules?")
 
@@ -324,8 +326,11 @@ def game_rules():
     read_rules = str(input("Y for yes or N for no? ")).lower()
     if read_rules == "y":
         type_text("The rules are simple, hit 21")
-    else:
+    elif read_rules == "n":
+        clear()
         type_text("Ok, lets get straight to it!")
+    else:
+        type_text("Please enter Y or N ")
 
 
 def play_again():
