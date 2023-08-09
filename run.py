@@ -310,7 +310,7 @@ def welcome():
     and retrieve their name.
     """
     type_text("Welcome to Blackjack")
-    type_text("Lets take some time to get to know eachother \U0001F4A5")
+    type_text("Lets take some time to get to know eachother.")
     name = input("Whats your name? ")
     sleep(0.5)
     clear()
@@ -323,14 +323,74 @@ def game_rules():
     To give the user the chance to read the rules
     or just go straight into the game.
     """
-    read_rules = str(input("Y for yes or N for no? ")).lower()
-    if read_rules == "y":
-        type_text("The rules are simple, hit 21")
-    elif read_rules == "n":
-        clear()
-        type_text("Ok, lets get straight to it!")
-    else:
-        type_text("Please enter Y or N ")
+    while True:
+        read_rules = str(input("Y for yes or N for no? ")).lower()
+        if read_rules == "y":
+            type_text("The rules are simple, hit 21 and you win....")
+            type_text("Well, unless the house has 21, then they win!")
+            type_text("Sorry, some rules suck and thats one of them.")
+            type_text("That's it really...")
+            sleep(2)
+            print()
+            # Joker emoji
+            type_text("Just Joking \U0001F0CF")
+            # Silly face emoji
+            type_text("\U0001F92A \U0001F92A \U0001F92A \U0001F92A")
+            print()
+            type_text("Enough messing around....")
+            print()
+            type_text("When prompted, let me know how many games \
+                you'd like to play")
+            type_text("You will then be dealt a hand containing 2 cards")
+            type_text("It's the total value, we are interested in")
+            type_text("Don't worry, i'll do the maths for you")
+            print()
+            type_text("Once you have your value of both your cards added together")
+            type_text("It will be your decision to use Hit or Stand when prompted")
+            type_text("Hit will deal you another card")
+            type_text("Stand will submit your hand")
+            type_text("As mentioned before, the aim is to get 21 or as close to")
+            type_text("Without going over")
+            type_text("So, be careful, if you get 22, you bust.")
+            print()
+            type_text("rules regarding the house hand")
+            type_text("If you bust by going over 21,")
+            type_text("the house hand automatically wins")
+            type_text("If the house hand has 17 or above they have to Stand")
+            print()
+            type_text("Card values")
+            type_text("Number cards have the value of the number on the card")
+            type_text("Example -- 3 of hearts = 3, 9 of clubs = 9")
+            type_text("Face cards (J,Q,K) all = 10")
+            type_text("Example -- J of hearts + 3 of clubs = a value of 13")
+            type_text("Ace (A) is the wild card")
+            type_text("Ace can = 1 or 11")
+            type_text("The value of Ace is dependant on if you have gone over 21")
+            type_text("Example - Ace + 5 of hearts = 16")
+            type_text("However, if you add another card with the value of 8")
+            type_text("The value would be 24 but the Ace would then be a 1")
+            type_text("giving you a total value of 14 (Ace (1) + 5 + 8 = 14) ")
+            print()
+            type_text("Got all that?")
+            type_text("Just keep playing... you'll get it eventually")
+            
+            while True:
+                time_to_play = str(input("So shall we get going? ")).lower()
+                if time_to_play == "y":
+                    return PlayGame()
+                elif time_to_play == "n":
+                    type_text("Ok cool, come back when your ready \U0001F601")
+                    exit()
+                else:
+                    type_text("Please enter Y or N")
+                continue
+        elif read_rules == "n":
+            clear()
+            type_text("Ok, lets get straight to it!")
+            break
+        else:
+            type_text("Please enter Y or N ")
+        continue
 
 
 def play_again():
@@ -352,7 +412,7 @@ def play_again():
             exit()
         else:
             type_text("Please enter Y for yes or N for n")
-            continue
+        continue
 
 
 def clear():
