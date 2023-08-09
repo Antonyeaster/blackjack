@@ -213,7 +213,7 @@ class PlayGame:
 
             decision = ""
             while player_hand.total() < 21 and decision not in ["s", "stand"]:
-                decision = input("Would you like to Hit or Stand:").lower()
+                decision = input("Would you like to Hit or Stand: ").lower()
                 print()
                 while decision not in ["hit", "stand", "h", "s"]:
                     decision = input(
@@ -326,6 +326,7 @@ def game_rules():
     while True:
         read_rules = str(input("Y for yes or N for no? ")).lower()
         if read_rules == "y":
+            clear()
             type_text("The rules are simple, hit 21 and you win....")
             type_text("Well, unless the house has 21, then they win!")
             type_text("Sorry, some rules suck and thats one of them.")
@@ -375,8 +376,12 @@ def game_rules():
             type_text("Just keep playing... you'll get it eventually")
             
             while True:
+                """
+                To run at the end of the rules if statement
+                """
                 time_to_play = str(input("So shall we get going? ")).lower()
                 if time_to_play == "y":
+                    clear()
                     return PlayGame()
                 elif time_to_play == "n":
                     type_text("Ok cool, come back when your ready \U0001F601")
@@ -408,6 +413,7 @@ def play_again():
             sleep(2)
             run.games()
         elif go_again == "n":
+            clear()
             type_text("Well it was nice to meet you, thanks for playing.")
             exit()
         else:
