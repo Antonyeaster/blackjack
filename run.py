@@ -22,6 +22,8 @@ print("""
 `------`------`------`------'
 """)
 
+player_name = ""
+
 
 class Deck:
     """
@@ -243,36 +245,37 @@ class PlayGame:
         """
         To check the winner against various different outcomes.
         """
+
         player_hand_amount = player_hand.total()
         house_hand_amount = house_hand.total()
 
         if not game_over:
             if player_hand.total() > 21:
                 type_text("Oops! You've bust! The House wins this round.")
-                print("Your hand was:", player_hand_amount)
-                print("House hand was:", house_hand_amount)
+                print(f"{player_name}'s hand total: {player_hand_amount}")
+                print("House hand total:", house_hand_amount)
                 print()
                 sleep(4)
                 return True
             elif house_hand.total() > 21:
                 type_text("The House has gone bust! You win this round.")
-                print("Your hand was:", player_hand_amount)
-                print("House hand was:", house_hand_amount)
+                print(f"{player_name}'s hand total: {player_hand_amount}")
+                print("House hand total:", house_hand_amount)
                 print()
                 sleep(4)
                 return True
             elif house_hand.equals_blackjack():
                 type_text(
                     "The House has Blackjack, They win, better luck next time")
-                print("Your hand was:", player_hand_amount)
-                print("House hand was:", house_hand_amount)
+                print(f"{player_name}'s hand total: {player_hand_amount}")
+                print("House hand total:", house_hand_amount)
                 print()
                 sleep(4)
                 return True
             elif player_hand.equals_blackjack():
                 type_text("WOW, you've got Blackjack, you win")
-                print("Your hand was:", player_hand_amount)
-                print("House hand was:", house_hand_amount)
+                print(f"{player_name}'s hand total: {player_hand_amount}")
+                print("House hand total:", house_hand_amount)
                 print()
                 sleep(4)
                 return True
@@ -284,20 +287,20 @@ class PlayGame:
         else:
             if house_hand.total() > player_hand.total():
                 type_text("The House wins this round!")
-                print("Your hand was:", player_hand_amount)
-                print("House hand was:", house_hand_amount)
+                print(f"{player_name}'s hand total: {player_hand_amount}")
+                print("House hand total:", house_hand_amount)
                 print()
                 sleep(4)
             elif house_hand.total() == player_hand.total():
                 type_text("It's a draw")
-                print("Your hand was:", player_hand_amount)
-                print("House hand was:", house_hand_amount)
+                print(f"{player_name}'s hand total: {player_hand_amount}")
+                print("House hand total:", house_hand_amount)
                 print()
                 sleep(4)
             else:
                 type_text("Great job, you win!")
-                print("Your hand was:", player_hand_amount)
-                print("House hand was:", house_hand_amount)
+                print(f"{player_name}'s hand total: {player_hand_amount}")
+                print("House hand total:", house_hand_amount)
                 print()
                 sleep(4)
             return True
@@ -309,13 +312,15 @@ def welcome():
     A few typed out lines to welcome the user
     and retrieve their name.
     """
+    global player_name
+
     type_text("Welcome to Blackjack")
     type_text("Lets take some time to get to know eachother.")
-    name = input("Whats your name? ")
+    player_name = input("Whats your name? ")
     sleep(0.5)
     clear()
-    type_text(f"Hi {name} my names Jack, nice to meet you")
-    type_text(f"So {name}, would you like to read the rules?")
+    type_text(f"Hi {player_name} my names Jack, nice to meet you")
+    type_text(f"So {player_name}, would you like to read the rules?")
 
 
 def game_rules():
@@ -414,7 +419,7 @@ def play_again():
             run.games()
         elif go_again == "n":
             clear()
-            type_text("Well it was nice to meet you, thanks for playing.")
+            type_text(f"Well it was nice to meet you {player_name}, thanks for playing.")
             exit()
         else:
             type_text("Please enter Y for yes or N for n")
