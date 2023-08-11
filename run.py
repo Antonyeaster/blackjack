@@ -143,7 +143,7 @@ class CardsInHand:
         """
         Display the players hand and the house hand.
         """
-        print(f'''{"House's" if self.house else player_name}'s hand: ''')
+        print(f'''{"House" if self.house else player_name}'s hand: ''')
         for index, card in enumerate(self.cards):
             if index == 1 and self.house and not show_hidden_cards and not \
                     self.equals_blackjack():
@@ -315,14 +315,13 @@ def welcome():
 
     type_text("Welcome to Blackjack")
     print()
-    type_text("Lets take some time to get to know eachother \U0001F60A")
-    player_name = input("Whats your name?\n").capitalize()
+    type_text("Lets take some time to get to know each other \U0001F60A")
+    player_name = input("What's your name?\n").capitalize()
     sleep(0.5)
     clear()
-    type_text(f"Hi {player_name} my names Jack, nice to meet you")
+    type_text(f"Hi {player_name} my name is Jack, nice to meet you!!")
     print()
     sleep(1)
-    type_text(f"So {player_name}, would you like to read the rules?")
 
 
 def game_rules():
@@ -331,6 +330,7 @@ def game_rules():
     or just go straight into the game.
     """
     while True:
+        type_text(f"So {player_name}, would you like to read the rules?")
         read_rules = str(input("Y for yes or N for no?\n")).lower()
         if read_rules == "y":
             clear()
@@ -354,8 +354,10 @@ def game_rules():
             type_text("It's the total value we are interested in")
             type_text("Don't worry, i'll do the maths for you")
             print()
-            type_text("Once you have your value of both your cards added together")
-            type_text("It will be your decision to use Hit or Stand when prompted")
+            type_text(
+                "Once you have your value of both your cards added together")
+            type_text(
+                "It will be your decision to use Hit or Stand when prompted")
             type_text("Hit will deal you another card")
             type_text("Stand will submit your hand")
             type_text("As mentioned before, the aim is to get 21 or as close to")
@@ -383,24 +385,26 @@ def game_rules():
             print()
             type_text("Got all that?")
             type_text("Just keep playing... you'll get it eventually")
-            
+
             while True:
                 """
                 To run at the end of the rules if statement
                 """
-                time_to_play = str(input("So shall we get going?\n")).lower()
+                time_to_play = str(
+                    input("So... Shall we get going?\n")).lower()
                 if time_to_play == "y":
                     clear()
                     return PlayGame()
                 elif time_to_play == "n":
-                    type_text("Ok cool, come back when your ready \U0001F601")
+                    type_text(
+                        "Ok cool, come back when you are ready to BlackJack \U0001F601")
                     exit()
                 else:
                     type_text("Please enter Y or N")
                 continue
         elif read_rules == "n":
             clear()
-            type_text("Ok, lets get straight to it!")
+            type_text("Ok, let's get straight to it!")
             break
         else:
             type_text("Please enter Y or N ")
@@ -420,10 +424,12 @@ def play_again():
             clear()
             type_text("Awesome, new game loading....")
             sleep(2)
+            game_rules()
             run.games()
         elif go_again == "n":
             clear()
-            type_text(f"Well it was nice to meet you {player_name}, thanks for playing.")
+            type_text(
+                f"Well it was nice to meet you {player_name}, thanks for playing.")
             exit()
         else:
             type_text("Please enter Y for yes or N for n")
