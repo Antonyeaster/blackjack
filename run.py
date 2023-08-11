@@ -143,7 +143,7 @@ class CardsInHand:
         """
         Display the players hand and the house hand.
         """
-        print(f'''{"house's" if self.house else "Your"} hand: ''')
+        print(f'''{"House's" if self.house else player_name}'s hand: ''')
         for index, card in enumerate(self.cards):
             if index == 1 and self.house and not show_hidden_cards and not \
                     self.equals_blackjack():
@@ -171,7 +171,8 @@ class PlayGame:
 
     def games(self):
         """
-        To run the main game in a loop until player chooses to stop.
+        To give the player a choice of how many games to play,
+        and increase the game number by 1 when check winner has run.
         """
         amount_of_games = 0
         game_number = 0
@@ -208,6 +209,8 @@ class PlayGame:
 
             if self.who_wins(player_hand, house_hand):
                 continue
+
+            # Player decision options, runs if value is less then 21
 
             decision = ""
             while player_hand.total() < 21 and decision not in ["s", "stand"]:
