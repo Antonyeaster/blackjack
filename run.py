@@ -22,8 +22,6 @@ print("""
 `------`------`------`------'
 """)
 
-player_name = ""
-
 
 class Deck:
     """
@@ -95,11 +93,9 @@ class CardType:
         """
         return f"{self.card_value['card_value']} of {self.suit}"
 
-    def __repr__(self):
-        return f"CardType('{self.suit}', '{self.card_value}')"
-
 
 class CardsInHand:
+
     def __init__(self, house_hand=False):
         """
         To create a hand for each player.
@@ -183,7 +179,7 @@ class PlayGame:
         while amount_of_games <= 0:
             try:
                 amount_of_games = int(input(
-                    "How many games would you like to play? "))
+                    "How many games would you like to play?\n"))
                 clear()
             except ValueError:
                 print("Thats not a number, please try again")
@@ -215,11 +211,11 @@ class PlayGame:
 
             decision = ""
             while player_hand.total() < 21 and decision not in ["s", "stand"]:
-                decision = input("Would you like to Hit or Stand: ").lower()
+                decision = input("Would you like to Hit or Stand:\n").lower()
                 print()
                 while decision not in ["hit", "stand", "h", "s"]:
                     decision = input(
-                        "Options available are Hit or Stand or (h/s)").lower()
+                        "Options available are Hit or Stand or (h/s)\n").lower()
                     print()
                 if decision in ["hit", "h"]:
                     player_hand.new_card(deck.dealt(1))
@@ -317,7 +313,7 @@ def welcome():
     type_text("Welcome to Blackjack")
     print()
     type_text("Lets take some time to get to know eachother \U0001F60A")
-    player_name = input("Whats your name? ").capitalize()
+    player_name = input("Whats your name?\n").capitalize()
     sleep(0.5)
     clear()
     type_text(f"Hi {player_name} my names Jack, nice to meet you")
@@ -332,7 +328,7 @@ def game_rules():
     or just go straight into the game.
     """
     while True:
-        read_rules = str(input("Y for yes or N for no? ")).lower()
+        read_rules = str(input("Y for yes or N for no?\n")).lower()
         if read_rules == "y":
             clear()
             type_text("The rules are simple, hit 21 and you win....")
@@ -343,6 +339,7 @@ def game_rules():
             print()
             # Joker emoji
             type_text("Just Joking \U0001F0CF")
+            sleep(1)
             # Silly face emoji
             type_text("\U0001F92A \U0001F92A \U0001F92A \U0001F92A")
             print()
@@ -388,7 +385,7 @@ def game_rules():
                 """
                 To run at the end of the rules if statement
                 """
-                time_to_play = str(input("So shall we get going? ")).lower()
+                time_to_play = str(input("So shall we get going?\n")).lower()
                 if time_to_play == "y":
                     clear()
                     return PlayGame()
@@ -414,7 +411,7 @@ def play_again():
     re_run = True
     while re_run:
         type_text("Would you like to play again? (Y/N)")
-        go_again = str(input("")).lower()
+        go_again = str(input("\n")).lower()
 
         if go_again == "y":
             clear()
