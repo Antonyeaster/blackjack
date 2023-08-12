@@ -164,7 +164,7 @@ def type_text(text):
     for i in text + "\n":
         sys.stdout.write(i)
         sys.stdout.flush()
-        time.sleep(0.01)
+        time.sleep(0.03)
 
 
 class PlayGame:
