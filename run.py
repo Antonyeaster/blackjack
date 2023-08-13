@@ -7,18 +7,18 @@ import random
 from time import sleep
 from os import system, name
 
-print("""
+print(r"""
 .------.------.------.------.------.
 |B.--. |L.--. |A.--. |C.--. |K.--. |
 | :(): | :/\: | (\/) | :/\: | :/\: |
 | ()() | (__) | :\/: | :\/: | :\/: |
 | '--'B| '--'L| '--'A| '--'C| '--'K|
 `------`------`------`------`------'
-.------.------.------.------.       
-|J.--. |A.--. |C.--. |K.--. |      
-| :(): | (\/) | :/\: | :/\: |      
-| ()() | :\/: | :\/: | :\/: |      
-| '--'J| '--'A| '--'C| '--'K|     
+.------.------.------.------.
+|J.--. |A.--. |C.--. |K.--. |
+| :(): | (\/) | :/\: | :/\: |
+| ()() | :\/: | :\/: | :\/: |
+| '--'J| '--'A| '--'C| '--'K|
 `------`------`------`------'
 """)
 
@@ -68,7 +68,7 @@ class Deck:
         the player and computer.
         """
         cards_to_be_dealt = []
-        for i in range(num):
+        for _ in range(num):
             if len(self.cards) > 0:
                 card = self.cards.pop()
                 cards_to_be_dealt.append(card)
@@ -193,7 +193,7 @@ class PlayGame:
             player_hand = CardsInHand()
             house_hand = CardsInHand(house_hand=True)
 
-            for i in range(2):
+            for _ in range(2):
                 player_hand.new_card(deck.dealt(1))
                 house_hand.new_card(deck.dealt(1))
 
@@ -218,7 +218,8 @@ class PlayGame:
                 print()
                 while decision not in ["hit", "stand", "h", "s"]:
                     decision = input(
-                        "Options available are Hit or Stand or (h/s)\n").lower()
+                        "Options available are Hit or Stand or "
+                        "(h/s)\n").lower()
                     print()
                 if decision in ["hit", "h"]:
                     player_hand.new_card(deck.dealt(1))
@@ -255,6 +256,7 @@ class PlayGame:
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(4)
+                clear()
                 return True
             elif house_hand.total() > 21:
                 type_text("The House has gone bust! You win this round.")
@@ -262,6 +264,7 @@ class PlayGame:
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(4)
+                clear()
                 return True
             elif house_hand.equals_blackjack():
                 type_text(
@@ -270,6 +273,7 @@ class PlayGame:
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(4)
+                clear()
                 return True
             elif player_hand.equals_blackjack():
                 type_text("WOW, you've got Blackjack, you win")
@@ -277,11 +281,14 @@ class PlayGame:
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(4)
+                clear()
                 return True
-            elif player_hand.equals_blackjack() and house_hand.equals_blackjack():
+            elif player_hand.equals_blackjack() and \
+                    house_hand.equals_blackjack():
                 type_text("Shame, that was close but it's a draw this time")
                 print()
                 sleep(4)
+                clear()
                 return True
         else:
             if house_hand.total() > player_hand.total():
@@ -290,18 +297,21 @@ class PlayGame:
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(4)
+                clear()
             elif house_hand.total() == player_hand.total():
                 type_text("It's a draw")
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(4)
+                clear()
             else:
                 type_text("Great job, you win!")
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(4)
+                clear()
             return True
         return False
 
@@ -321,6 +331,30 @@ def welcome():
     clear()
     type_text(f"Hi {player_name} my name is Jack, nice to meet you!!")
     print()
+    type_text(
+        'Now we have that out the way, I just wanted to go over a \n'
+        'couple of things about the game before we continue'
+        '\n'
+        '\n'
+        'Firstly, Thank you for being here, '
+        'I really hope you enjoy the game!'
+        '\n'
+        '\n'
+        'Throughout the process of the game you can use '
+        'upper case or lower case, '
+        'the system will know exactly what you are trying to say.'
+        '\n'
+        '\n'
+        'After any input you make, hitting the enter key will take \n'
+        'you to the next step if you have entered a valid input. \n'
+        'Any invalid input will give you prompt to enter a valid input.'
+        '\n'
+        '\n'
+        'So, grab your snacks, grab your drinks and let\'s play '
+        'some Blackjack'
+        '\n'
+        '\n'
+        )
     sleep(1)
 
 
@@ -334,10 +368,12 @@ def game_rules():
         read_rules = str(input("Y for yes or N for no?\n")).lower()
         if read_rules == "y":
             clear()
-            type_text("The rules are simple, hit 21 and you win....")
-            type_text("Well, unless the house has 21, then they win!")
-            type_text("Sorry, some rules suck and thats one of them.")
-            type_text("That's it really...")
+            type_text(
+                "The rules are simple, hit 21 and you win....\n"
+                "Well, unless the house has 21, then they win!\n"
+                "Sorry, some rules suck and thats one of them.\n"
+                "That's it really..."
+                )
             sleep(2)
             print()
             # Joker emoji
@@ -348,43 +384,56 @@ def game_rules():
             print()
             type_text("Enough messing around....")
             print()
-            type_text("When prompted, let me know how many games \
-                you'd like to play")
-            type_text("You will then be dealt a hand containing 2 cards")
-            type_text("It's the total value we are interested in")
-            type_text("Don't worry, i'll do the maths for you")
-            print()
             type_text(
-                "Once you have your value of both your cards added together")
-            type_text(
-                "It will be your decision to use Hit or Stand when prompted")
-            type_text("Hit will deal you another card")
-            type_text("Stand will submit your hand")
-            type_text("As mentioned before, the aim is to get 21 or as close to")
-            type_text("without going over")
-            type_text("So, be careful, if you get 22, you bust.")
-            print()
-            type_text("Rules regarding the house hand")
-            type_text("If you bust by going over 21,")
-            type_text("the house hand automatically wins")
-            type_text("If the house hand has 17 or above they have to Stand")
-            type_text("And if they have below 17 they have to Hit")
-            print()
-            type_text("Card values")
-            type_text("Number cards have the value of the number on the card")
-            type_text("Example -- 3 of hearts = 3, 9 of clubs = 9")
-            type_text("Face cards (J,Q,K) all = 10 individually")
-            type_text("Example -- J of hearts + 3 of clubs = a value of 13")
-            type_text("Ace (A) is the wild card")
-            type_text("Ace can = 1 or 11")
-            type_text("The value of Ace is dependant on if you have gone over 21")
-            type_text("Example - Ace + 5 of hearts = 16")
-            type_text("However, if you add another card with the value of 8")
-            type_text("The value would be 24 but the Ace would then be a 1")
-            type_text("giving you a total value of 14 (Ace (1) + 5 + 8 = 14) ")
-            print()
-            type_text("Got all that?")
-            type_text("Just keep playing... you'll get it eventually")
+                "When prompted, let me know how many games "
+                "you'd like to play\n"
+                "You will then be dealt a hand containing 2 cards\n"
+                "It's the total value we are interested in\n"
+                "Don't worry, I'll do the maths for you"
+                '\n'
+                '\n'
+                "Once you have your value of both your cards added together\n"
+                "It will be your decision to use Hit or Stand when prompted\n"
+                "Hit will deal you another card\n"
+                "Stand will submit your hand\n"
+                "As mentioned before, the aim is to get 21 or as close to "
+                "without going over\n"
+                "So, be careful, if you get 22, you bust."
+                '\n'
+                '\n'
+                "Rules regarding the house hand\n"
+                "If you bust by going over 21, "
+                "the house hand automatically wins\n"
+                "If the house hand has 17 or above they have to Stand\n"
+                "And if they have below 17 they have to Hit"
+                '\n'
+                '\n'
+                "Card values\n"
+                "Number cards have the value of the number on the card\n"
+                '\n'
+                "Example:\n3 of hearts \U00002665 = 3\n"
+                "9 of clubs \U00002663 = 9\n"
+                '\n'
+                "Face cards (J,Q,K) all = 10 individually\n"
+                "Example:\nJ of hearts \U00002665 + "
+                "3 of clubs \U00002663 = a value of 13\n"
+                '\n'
+                "Ace (A) is the wild card, "
+                "Ace can = 1 or 11\n"
+                "The value of Ace is dependant on if you have gone over 21\n"
+                '\n'
+                "Example:\n Ace + 5 of hearts \U00002665 = 16\n"
+                '\n'
+                "However, if you add another card with the value of 8\n"
+                "The value would be 24 but the Ace would then be a 1\n"
+                "giving you a total value of 14 (Ace (1) + 5 + 8 = 14)"
+                '\n'
+                '\n'
+                "Got all that?\n"
+                "Just keep playing... you'll get it eventually"
+                '\n'
+                '\n'
+                )
 
             while True:
                 """
@@ -397,7 +446,8 @@ def game_rules():
                     return PlayGame()
                 elif time_to_play == "n":
                     type_text(
-                        "Ok cool, come back when you are ready to BlackJack \U0001F601")
+                        "Ok cool, come back when you are ready to "
+                        "BlackJack \U0001F601")
                     exit()
                 else:
                     type_text("Please enter Y or N")
@@ -429,7 +479,8 @@ def play_again():
         elif go_again == "n":
             clear()
             type_text(
-                f"Well it was nice to meet you {player_name}, thanks for playing.")
+                f"Well it was nice to meet you {player_name}, thanks for "
+                "playing.")
             exit()
         else:
             type_text("Please enter Y for yes or N for n")
