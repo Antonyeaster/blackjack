@@ -254,14 +254,16 @@ class PlayGame:
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
                 print()
-                sleep(4)
+                sleep(1)
+                input("Press Enter to go to the next game...")
                 return True
             elif house_hand.total() > 21:
                 type_text("The House has gone bust! You win this round.")
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
                 print()
-                sleep(4)
+                sleep(1)
+                input("Press Enter to go to the next game...")
                 return True
             elif house_hand.equals_blackjack():
                 type_text(
@@ -269,14 +271,16 @@ class PlayGame:
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
                 print()
-                sleep(4)
+                sleep(1)
+                input("Press Enter to go to the next game...")
                 return True
             elif player_hand.equals_blackjack():
                 type_text("WOW, you've got Blackjack, you win")
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
                 print()
-                sleep(4)
+                sleep(1)
+                input("Press Enter to go to the next game...")
                 return True
             elif player_hand.equals_blackjack() and \
                     house_hand.equals_blackjack():
@@ -284,7 +288,8 @@ class PlayGame:
                     "Shame, that was close but as mentioned before the House "
                     "always wins if both hands are Blackjack")
                 print()
-                sleep(4)
+                sleep(1)
+                input("Press Enter to go to the next game...")
                 return True
         else:
             if house_hand.total() > player_hand.total():
@@ -292,19 +297,22 @@ class PlayGame:
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
                 print()
-                sleep(4)
+                sleep(1)
+                input("Press Enter to go to the next game...")
             elif house_hand.total() == player_hand.total():
                 type_text("It's a draw")
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
                 print()
-                sleep(4)
+                sleep(1)
+                input("Press Enter to go to the next game...")
             else:
                 type_text("Great job, you win!")
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
                 print()
-                sleep(4)
+                sleep(1)
+                input("Press Enter to go to the next game...")
             return True
         return False
 
@@ -394,6 +402,11 @@ def game_rules():
                 "So, be careful, if you get 22, you bust."
                 '\n'
                 '\n'
+                )
+            input("Press Enter to continue...")
+            type_text(
+                '\n'
+                '\n'
                 "Rules regarding the house hand\n"
                 "If you bust by going over 21, "
                 "the house hand automatically wins\n"
@@ -415,7 +428,7 @@ def game_rules():
                 "Ace can = 1 or 11\n"
                 "The value of Ace is dependant on if you have gone over 21\n"
                 '\n'
-                "Example:\n Ace + 5 of hearts \U00002665 = 16\n"
+                "Example:\nAce + 5 of hearts \U00002665 = 16\n"
                 '\n'
                 "However, if you add another card with the value of 8\n"
                 "The value would be 24 but the Ace would then be a 1\n"
@@ -433,7 +446,7 @@ def game_rules():
                 To run at the end of the rules if statement
                 """
                 time_to_play = str(
-                    input("So... Shall we get going?\n")).lower()
+                    input("So... Shall we get going? (Y/N)\n")).lower()
                 if time_to_play == "y":
                     clear()
                     return PlayGame()
