@@ -214,16 +214,31 @@ class PlayGame:
 
             decision = ""
             while player_hand.total() < 21 and decision not in ["s", "stand"]:
-                decision = input("Would you like to Hit or Stand:\n").lower()
+                decision = input("Would you like to Hit, Stand or Quit:\n").lower()
                 print()
-                while decision not in ["hit", "stand", "h", "s"]:
+                while decision not in ["hit", "stand", "h", "s", "quit", "q"]:
                     decision = input(
-                        "Options available are Hit or Stand or "
-                        "(h/s)\n").lower()
+                        "Options available are Hit, Stand or Quit or "
+                        "(h/s/q)\n").lower()
                     print()
                 if decision in ["hit", "h"]:
                     player_hand.new_card(deck.dealt(1))
                     player_hand.display_hands()
+                
+                if decision in ["quit", "q"]:
+                    while True:
+                        exit_game = str(input("Are you sure you want to quit? (Y/N)\n"))
+                        if exit_game == "y":
+                            type_text("\nOk, thanks for playing, come back soon.")
+                            sleep(4)
+                            clear()
+                            exit()
+                        elif exit_game == "n":
+                            type_text("Awesome, continue where you left off")
+                            break
+                        else:
+                            type_text("Please enter Y for yes or N for no")
+                        continue
 
             if self.who_wins(player_hand, house_hand):
                 continue
@@ -255,7 +270,7 @@ class PlayGame:
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(1)
-                input("Press Enter to go to the next game...")
+                input("Press Enter to continue...")
                 return True
             elif house_hand.total() > 21:
                 type_text("The House has gone bust! You win this round.")
@@ -263,7 +278,7 @@ class PlayGame:
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(1)
-                input("Press Enter to go to the next game...")
+                input("Press Enter to continue...")
                 return True
             elif house_hand.equals_blackjack():
                 type_text(
@@ -272,7 +287,7 @@ class PlayGame:
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(1)
-                input("Press Enter to go to the next game...")
+                input("Press Enter to continue...")
                 return True
             elif player_hand.equals_blackjack():
                 type_text("WOW, you've got Blackjack, you win")
@@ -280,7 +295,7 @@ class PlayGame:
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(1)
-                input("Press Enter to go to the next game...")
+                input("Press Enter to continue...")
                 return True
             elif player_hand.equals_blackjack() and \
                     house_hand.equals_blackjack():
@@ -289,7 +304,7 @@ class PlayGame:
                     "always wins if both hands are Blackjack")
                 print()
                 sleep(1)
-                input("Press Enter to go to the next game...")
+                input("Press Enter to continue...")
                 return True
         else:
             if house_hand.total() > player_hand.total():
@@ -298,21 +313,21 @@ class PlayGame:
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(1)
-                input("Press Enter to go to the next game...")
+                input("Press Enter to continue...")
             elif house_hand.total() == player_hand.total():
                 type_text("It's a draw")
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(1)
-                input("Press Enter to go to the next game...")
+                input("Press Enter to continue...")
             else:
                 type_text("Great job, you win!")
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(1)
-                input("Press Enter to go to the next game...")
+                input("Press Enter to continue...")
             return True
         return False
 
@@ -353,7 +368,6 @@ def welcome():
         '\n'
         'So, grab your snacks, grab your drinks and let\'s play '
         'some Blackjack'
-        '\n'
         '\n'
         )
     sleep(1)
