@@ -231,7 +231,6 @@ class PlayGame:
                         if exit_game == "y":
                             type_text("\nOk, thanks for playing, come back soon.")
                             sleep(4)
-                            clear()
                             exit()
                         elif exit_game == "n":
                             type_text("Awesome, continue where you left off")
@@ -358,7 +357,9 @@ def welcome():
         '\n'
         'Throughout the process of the game you can use '
         'upper case or lower case, the\n'
-        'system will know exactly what you are trying to say.'
+        'system will know exactly what you are trying to say.\n'
+        'When you see a (Y/N), this means, '
+        'please answer with y for yes or n for no'
         '\n'
         '\n'
         'After any input you make, hitting the enter key will take \n'
