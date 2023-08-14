@@ -245,11 +245,6 @@ class PlayGame:
         """
         To check the winner against various different outcomes.
         """
-        global player_score, house_score
-
-        player_score = 0
-        house_score = 0
-
         player_hand_amount = player_hand.total()
         house_hand_amount = house_hand.total()
 
@@ -258,7 +253,6 @@ class PlayGame:
                 type_text("Oops! You've bust! The House wins this round.")
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
-                house_score += 1
                 print()
                 sleep(4)
                 return True
@@ -266,7 +260,6 @@ class PlayGame:
                 type_text("The House has gone bust! You win this round.")
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
-                player_score += 1
                 print()
                 sleep(4)
                 return True
@@ -275,7 +268,6 @@ class PlayGame:
                     "The House has Blackjack, They win, better luck next time")
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
-                house_score += 1
                 print()
                 sleep(4)
                 return True
@@ -283,15 +275,14 @@ class PlayGame:
                 type_text("WOW, you've got Blackjack, you win")
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
-                player_score += 1
                 print()
                 sleep(4)
                 return True
             elif player_hand.equals_blackjack() and \
                     house_hand.equals_blackjack():
-                type_text("Shame, that was close but it's a draw this time")
-                player_score += 1
-                house_score += 1
+                type_text(
+                    "Shame, that was close but as mentioned before the House "
+                    "always wins if both hands are Blackjack")
                 print()
                 sleep(4)
                 return True
@@ -300,22 +291,18 @@ class PlayGame:
                 type_text("The House wins this round!")
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
-                house_score += 1
                 print()
                 sleep(4)
             elif house_hand.total() == player_hand.total():
                 type_text("It's a draw")
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
-                player_score += 1
-                house_score += 1
                 print()
                 sleep(4)
             else:
                 type_text("Great job, you win!")
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
-                player_score += 1
                 print()
                 sleep(4)
             return True
@@ -471,9 +458,6 @@ def play_again():
     """
     To give the user a chance to play agian.
     """
-    type_text(f"{player_name}'s end game score: {player_score}")
-    type_text(f"House's end game score: {house_score}")
-    print()
     re_run = True
     while re_run:
         type_text("Would you like to play again? (Y/N)")
