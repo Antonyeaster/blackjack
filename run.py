@@ -219,7 +219,7 @@ class PlayGame:
                 while decision not in ["hit", "stand", "h", "s", "quit", "q"]:
                     decision = input(
                         "Options available are Hit, Stand or Quit or "
-                        "(h/s/q)\n").lower()
+                        "(h/s/q)\n(Letter casing does not matter)\n").lower()
                     print()
                 if decision in ["hit", "h"]:
                     player_hand.new_card(deck.dealt(1))
