@@ -164,7 +164,7 @@ def type_text(text):
     for i in text + "\n":
         sys.stdout.write(i)
         sys.stdout.flush()
-        time.sleep(0.03)
+        time.sleep(0.04)
 
 
 class PlayGame:
@@ -521,11 +521,11 @@ def play_again():
 def clear():
     """
     To clear the terminal for a more focused approach.
-    """
-    # For a Windows os
+    Used https://www.geeksforgeeks.org/clear-screen-python/ 
+    to help write this function.
+    """ 
     if name == "nt":
         _ = system("cls")
-    # For a Mac os
     else:
         _ = system("clear")
 
