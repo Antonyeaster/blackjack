@@ -8,11 +8,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/attach/attach.js"></script>
-    <title>Python Terminal by Code Institute</title>
+    <link rel='icon' sizes="any"
+            href="https://cdn.pixabay.com/photo/2020/11/16/23/12/poker-5750834_1280.jpg" />
+    <title>Antony Easter Blackjack</title>
     <style>
+        
         body {
             font-family: Arial;
         }
+
+        #main-container {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+            }
+
+        #background {
+            height: 100vh;
+            left: 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: -5;
+            }
 
         /**
         * Default styles for xterm.js
