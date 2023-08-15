@@ -214,7 +214,8 @@ class PlayGame:
 
             decision = ""
             while player_hand.total() < 21 and decision not in ["s", "stand"]:
-                decision = input("Would you like to Hit, Stand or Quit:\n").lower()
+                decision = input(
+                    "Would you like to Hit, Stand or Quit:\n").lower()
                 print()
                 while decision not in ["hit", "stand", "h", "s", "quit", "q"]:
                     decision = input(
@@ -224,12 +225,13 @@ class PlayGame:
                 if decision in ["hit", "h"]:
                     player_hand.new_card(deck.dealt(1))
                     player_hand.display_hands()
-                
                 if decision in ["quit", "q"]:
                     while True:
-                        exit_game = str(input("Are you sure you want to quit? (Y/N)\n"))
+                        exit_game = str(input(
+                            "Are you sure you want to quit? (Y/N)\n"))
                         if exit_game == "y":
-                            type_text("\nOk, thanks for playing, come back soon.")
+                            type_text(
+                                "\nOk, thanks for playing, come back soon.")
                             sleep(4)
                             exit()
                         elif exit_game == "n":
