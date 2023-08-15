@@ -341,37 +341,45 @@ def welcome():
     type_text("Welcome to Blackjack")
     print()
     type_text("Lets take some time to get to know each other \U0001F60A")
-    player_name = input("What's your name?\n").capitalize()
-    sleep(0.5)
-    clear()
-    type_text(f"Hi {player_name} my name is Jack, nice to meet you!!")
-    print()
-    type_text(
-        'Now we have that out the way, I just wanted to go over a \n'
-        'couple of things about the game before we continue'
-        '\n'
-        '\n'
-        'Firstly, Thank you for being here, '
-        'I really hope you enjoy the game!'
-        '\n'
-        '\n'
-        'Throughout the process of the game you can use '
-        'upper case or lower case, the\n'
-        'system will know exactly what you are trying to say.\n'
-        'When you see a (Y/N), this means, '
-        'please answer with y for yes or n for no'
-        '\n'
-        '\n'
-        'After any input you make, hitting the enter key will take \n'
-        'you to the next step if you have entered a valid input. \n'
-        'Any invalid input will give you prompt to enter a valid input.'
-        '\n'
-        '\n'
-        'So, grab your snacks, grab your drinks and let\'s play '
-        'some Blackjack'
-        '\n'
-        )
-    sleep(1)
+    while True:
+        player_name = input("What's your name?\n").capitalize()
+        if player_name == " ":
+            type_text("Come on, that's not a proper name.")
+            continue
+        elif player_name == "Jack":
+            type_text("I Love That Name!!")
+        sleep(1)
+        type_text(f"Hi {player_name} my name is Jack, nice to meet you!!")
+        print()
+        input("Press enter to continue...")
+        clear()
+        type_text(
+            'Now we have that out the way, I just wanted to go over a \n'
+            'couple of things about the game before we continue'
+            '\n'
+            '\n'
+            'Firstly, Thank you for being here, '
+            'I really hope you enjoy the game!'
+            '\n'
+            '\n'
+            'Throughout the process of the game you can use '
+            'upper case or lower case, the\n'
+            'system will know exactly what you are trying to say.\n'
+            'When you see a (Y/N), this means, '
+            'please answer with y for yes or n for no'
+            '\n'
+            '\n'
+            'After any input you make, hitting the enter key will take \n'
+            'you to the next step if you have entered a valid input. \n'
+            'Any invalid input will give you prompt to enter a valid input.'
+            '\n'
+            '\n'
+            'So, grab your snacks, grab your drinks and let\'s play '
+            'some Blackjack'
+            '\n'
+            )
+        sleep(1)
+        break
 
 
 def game_rules():
