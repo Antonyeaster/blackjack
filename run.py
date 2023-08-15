@@ -521,9 +521,9 @@ def play_again():
 def clear():
     """
     To clear the terminal for a more focused approach.
-    Used https://www.geeksforgeeks.org/clear-screen-python/ 
+    Used https://www.geeksforgeeks.org/clear-screen-python/
     to help write this function.
-    """ 
+    """
     if name == "nt":
         _ = system("cls")
     else:
