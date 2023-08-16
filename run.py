@@ -343,7 +343,7 @@ def welcome():
 
     type_text("Welcome to Blackjack")
     print()
-    type_text("Lets take some time to get to know each other \U0001F60A")
+    type_text("Let's take some time to get to know each other \U0001F60A")
     while True:
         player_name = input("What's your name?\n").capitalize()
         if player_name == " ":
