@@ -2,7 +2,7 @@
 
 A Command-line game of BlackJack that users can play directly in the terminal. It's not the usual style of BlackJack people are used to playing but it has exactly the same outline.
 
-[Click here to view the final deployment](https://blackjack--21-799b0dacef4d.herokuapp.com/)
+![Click here to view the final deployment](https://blackjack--21-799b0dacef4d.herokuapp.com/)
 
 [Background Image](/documentation\screenshots\background-image.png)
 
@@ -113,13 +113,13 @@ Error handling:
 *  The name can not be a simple space, characters must be added
 *  I have used the lower() inbuilt function to ensure any casing is excepted
 
-[Name](/documentation/screenshots/name.png)
+![Name](/documentation/screenshots/name.png)
 
 ### Introduction
 
 Brief introduction and guidelines for navigating the game.
 
-[Introduction](/documentation/screenshots/introduction-page.png)
+![Introduction](/documentation/screenshots/introduction-page.png)
 
 ### Game Rules
 
@@ -128,40 +128,40 @@ The game rules section has a "Press enter to continue..." input in the middle, t
 Error handling:
 *  Accepted values are (y,n) in any case. If the incorrect input is given, a prompt will remind the player of the options. 
 
-[Game Rules](/documentation\screenshots\reading-rules1.png)
-[Game Rules](/documentation\screenshots\reading-rules2.png)
-[Game Rules](/documentation\screenshots\reading-rules3.png)
+![Game Rules](/documentation\screenshots\reading-rules1.png)
+![Game Rules](/documentation\screenshots\reading-rules2.png)
+![Game Rules](/documentation\screenshots\reading-rules3.png)
 
 ### How Many Games
 
 After selecting to play the game the player will be asked to input how many games they would like to play.
 
-[How Many Games](/documentation/screenshots/how-many-games.png)
+![How Many Games](/documentation/screenshots/how-many-games.png)
 
 ### Game Load
 
 Once the amount of games has been decided, the player will be sent to "Game 1 out of ..."
 The game has emojis to reflect the suit of the card.
 
-[Game Load](/documentation\screenshots\game-layout.png)
+![Game Load](/documentation\screenshots\game-layout.png)
 
 ### Player Hand
 
 The player hand will have two visible values.
 
-[Player Hand](/documentation/screenshots/player-hand.png)
+![Player Hand](/documentation/screenshots/player-hand.png)
 
 ### House Hand
 
 The house hand will have one visible value and one hidden value marked with a 'X'
 
-[House Hand](/documentation/screenshots/house-hand.png)
+![House Hand](/documentation/screenshots/house-hand.png)
 
 ### Hand Values
 
 The total value of the player hand will be calculated for the player everythime a new card is added.
 
-[Hand value](/documentation/screenshots/hand-value.png)
+![Hand value](/documentation/screenshots/hand-value.png)
 
 ### Hit, Stand or Quit
 
@@ -170,20 +170,20 @@ The player will now need to make a descision to Hit, Stand or Quit.
 Error handling:
 *  Accepted values (h, hit, s, stand, q, quit) the player will need to enter a value listed in any casing
 
-[Hit, Stand or Quit](/documentation\screenshots\hit-stand-quit.png)
+![Hit, Stand or Quit](/documentation\screenshots\hit-stand-quit.png)
 
 #### Hit
 
 The hit descision will add another card to the hand and re calculate the value of the hand.
 The game is programmed to accept (h or hit) which is not case sensitive. The player can keep inputting hit until they either go over 21 and bust, have an exact value of 21 or are happy to stand with their value. 
 
-[Hit](/documentation\screenshots\hit-example.png)
+![Hit](/documentation\screenshots\hit-example.png)
 
 #### Stand
 
 The stand descision will submit the players hand and calculate the winner of the game. The game is programmed to accept (s or stand) which is not case sensitive.
 
-[Stand](/documentation\screenshots\stand-example.png)
+![Stand](/documentation\screenshots\stand-example.png)
 
 #### Quit
 
@@ -191,13 +191,13 @@ The player will have the option to quit each time they play a hand. A second pro
 
 Quit:
 
-[Exit Game](/documentation\screenshots\exit-game.png)
+![Exit Game](/documentation\screenshots\exit-game.png)
 
 Continue where you left off:
 
 If no is selected, the player will just be able to continue with the game they were on before they entered quit.
 
-[Continue Game](/documentation\screenshots\continue-game.png)
+![Continue Game](/documentation\screenshots\continue-game.png)
 
 #### Win Or Lose
 
@@ -205,11 +205,11 @@ Once the values have been calculated, a winner will be decided. After a small de
 
 Win:
 
-[Win](/documentation\screenshots\blackjack-win.png)
+![Win](/documentation\screenshots\blackjack-win.png)
 
 Loss:
 
-[Loss](/documentation\screenshots\bust.png)
+![Loss](/documentation\screenshots\bust.png)
 
 
 #### Play Again
@@ -220,7 +220,7 @@ Error handling:
 
 *  Accepted values are (y,n) in any case. If the incorrect input is given, a prompt will remind the player of the options.
 
-[Play Again](/documentation\screenshots\play-again.png)
+![Play Again](/documentation\screenshots\play-again.png)
 
 #### New Game
 
@@ -230,15 +230,15 @@ Error handling:
 
 *  Accepted values are (y,n) in any case. If the incorrect input is given, a prompt will remind the player of the options.
 
-[New Game Loaded](/documentation\screenshots\new-game-loaded.png)
+![New Game Loaded](/documentation\screenshots\new-game-loaded.png)
 
 #### Goodbye messages
 
 When the player decides to leave the game a goodbye message is displayed.
 
-[Goodbye1](/documentation\screenshots\goodbye1.png)
-[Goodbye2](/documentation\screenshots\goodbye2.png)
-[Goodbye3](/documentation\screenshots\goodbye3.png)
+![Goodbye1](/documentation\screenshots\goodbye1.png)
+![Goodbye2](/documentation\screenshots\goodbye2.png)
+![Goodbye3](/documentation\screenshots\goodbye3.png)
 
 #### Typewritter Effect
 
@@ -325,7 +325,7 @@ Throughout the whole process of the project, manual testing was being done const
 
 I used the [HTML validator](https://validator.w3.org/) as I adjusted the background of the Code Institute template.
 
-[HTML Validator](documentation\testing\html-validator.png)
+![HTML Validator](documentation\testing\html-validator.png)
 
 #### CSS:
 
@@ -413,6 +413,7 @@ Before the final deployment to Heroku, I had to follow a couple of steps from Co
 
 
 *  My Family - As always, thanking my family is important. Over the last month, my head has been inside my laptop trying to understand and learn Python, but as always, they understand it's what needs to be done and they fully support it.
+
 ## Credits
 
 *  Python OOP Tutorial series by Corey Schafer for general reference on working with classes - [View the Videos here](https://youtu.be/ZDa-Z5JzLYM)
