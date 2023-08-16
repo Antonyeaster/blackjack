@@ -30,7 +30,8 @@ class Deck:
 
     def __init__(self):
         """
-        To be able to pull any suit or value from the deck and into
+        To generate a deck of 52 cards and
+        to be able to pull any suit or value from the deck and into
         the player or computers hand.
         """
         self.cards = []
@@ -64,8 +65,8 @@ class Deck:
 
     def dealt(self, num):
         """
-        To select 2 cards from the deck and be dealt to
-        the player and computer.
+        To select 2 cards from the end of the shuffled deck
+        and then deal them out to the player and computer.
         """
         cards_to_be_dealt = []
         for _ in range(num):
@@ -152,7 +153,7 @@ class CardsInHand:
                 print(card)
 
         if not self.house:
-            print("value:", self.total())
+            print("Value:", self.total())
         print()
 
 
@@ -231,7 +232,7 @@ class PlayGame:
                             "Are you sure you want to quit? (Y/N)\n"))
                         if exit_game == "y":
                             type_text(
-                                "\nOk, thanks for playing, come back soon.")
+                                "\nOk, thanks for playing. Come back soon.")
                             sleep(4)
                             exit()
                         elif exit_game == "n":
@@ -271,7 +272,7 @@ class PlayGame:
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(1)
-                input("Press Enter to continue...")
+                input("Press enter to continue...\n")
                 return True
             elif house_hand.total() > 21:
                 type_text("The House has gone bust! You win this round.")
@@ -279,7 +280,7 @@ class PlayGame:
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(1)
-                input("Press Enter to continue...")
+                input("Press enter to continue...\n")
                 return True
             elif house_hand.equals_blackjack():
                 type_text(
@@ -288,7 +289,7 @@ class PlayGame:
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(1)
-                input("Press Enter to continue...")
+                input("Press enter to continue...\n")
                 return True
             elif player_hand.equals_blackjack():
                 type_text("WOW, you've got Blackjack, you win")
@@ -296,7 +297,7 @@ class PlayGame:
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(1)
-                input("Press Enter to continue...")
+                input("Press enter to continue...\n")
                 return True
             elif player_hand.equals_blackjack() and \
                     house_hand.equals_blackjack():
@@ -305,7 +306,7 @@ class PlayGame:
                     "always wins if both hands are Blackjack")
                 print()
                 sleep(1)
-                input("Press Enter to continue...")
+                input("Press enter to continue...\n")
                 return True
         else:
             if house_hand.total() > player_hand.total():
@@ -314,21 +315,21 @@ class PlayGame:
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(1)
-                input("Press Enter to continue...")
+                input("Press enter to continue...\n")
             elif house_hand.total() == player_hand.total():
                 type_text("It's a draw")
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(1)
-                input("Press Enter to continue...")
+                input("Press enter to continue...\n")
             else:
                 type_text("Great job, you win!")
                 print(f"{player_name}'s hand total: {player_hand_amount}")
                 print("House hand total:", house_hand_amount)
                 print()
                 sleep(1)
-                input("Press Enter to continue...")
+                input("Press enter to continue...\n")
             return True
         return False
 
@@ -353,7 +354,7 @@ def welcome():
         sleep(1)
         type_text(f"Hi {player_name} my name is Jack, nice to meet you!!")
         print()
-        input("Press enter to continue...")
+        input("Press enter to continue...\n")
         clear()
         type_text(
             'Now we have that out the way, I just wanted to go over a \n'
@@ -428,7 +429,7 @@ def game_rules():
                 '\n'
                 '\n'
                 )
-            input("Press Enter to continue...")
+            input("Press enter to continue...\n")
             type_text(
                 '\n'
                 '\n'
@@ -494,7 +495,8 @@ def game_rules():
 
 def play_again():
     """
-    To give the user a chance to play agian.
+    To give the player a chance to play agian if they
+    wish to.
     """
     re_run = True
     while re_run:
