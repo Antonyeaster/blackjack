@@ -415,10 +415,10 @@ def game_rules():
                 "you'd like to play.\n"
                 "You will then be dealt a hand containing 2 cards.\n"
                 "It's the total value we are interested in.\n"
-                "Don't worry, I'll do the maths for you"
+                "Don't worry, I'll do the maths for you."
                 '\n'
                 '\n'
-                "Once you have your value of both your cards added together,\n"
+                "Once you have the value of both your cards added together,\n"
                 "It will be your decision to use Hit or Stand when prompted.\n"
                 "Hit will deal you another card,\n"
                 "Stand will submit your hand.\n"
@@ -436,7 +436,7 @@ def game_rules():
                 "If you bust by going over 21, "
                 "the house hand automatically wins.\n"
                 "If the house hand has 17 or above they have to Stand.\n"
-                "And if they have below 17 they have to Hit"
+                "And if they have below 17 they have to Hit."
                 '\n'
                 '\n'
                 "Card values:\n"
