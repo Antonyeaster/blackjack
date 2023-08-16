@@ -9,47 +9,48 @@ A Command-line game of BlackJack that users can play directly in the terminal. I
 
 ## Contents
 
-*  [Overview](#Overview)
-    *  [How To Play](#How-To-Play)
-        *  [How To Win](#How-To-Win)
-    *  [User Stories](#User-Stories)
-    *  [Site Aims](#Site-Aims)
-    *  [How To Achieve Ahis](#How-To-Achieve-This)
-    *  [Game Flow Chart](#Game-Flow-Chart)
-*  [Features](#Features)
-    *  [Welcome Screen](#Welcome-Screen)
-    *  [Player name input](#Player-name-input)
-    *  [Introduction](#Introduction)
-    *  [Game Rules](#Game-Rules)
-    *  [How Many Games To Play](#How-Many-Games-To-Play)
-    *  [Game Load](#Game-Load)
-    *  [Player Hand](#Player-Hand)
-    *  [House Hand](#House_Hand)
-    *  [Hand Values](#Hand-Values)
-    *  [Hit, Stand or Quit](#Hit,-Stand-or-Quit)
-        *  [Hit](#Hit)
-        *  [Stand](#Stand)
-        *  [Quit](#Quit)
-    *  [Win Or Lose](#Win-Or-Lose)
-    *  [Play Again](#Play-Again)
-    *  [New Game](#New-Game)
-    *  [Goodbye messages](#Goodbye-messages)
-*  [Future Enhancement](#Future-Enhancement)
-*  [Classes](#Classes)
-*  [Testing](#Testing)
-    *  [Manual Testing](#Manual-Testing)
-    *  [Validators](#Validators)
-*  [Imports Used](#Imports-Used)
-*  [Bug Fixes](#Bug-Fixes)
-*  [Deployment](#Deployment)
-*  [Honorable Mentions](#Honorable-Mentions)
-*  [Credits](#Credits)
+* [Overview](#Overview)
+    * [How To Play](#How-To-Play)
+        * [How To Win](#How-To-Win)
+    * [User Stories](#User-Stories)
+    * [Site Aims](#Site-Aims)
+    * [How To Achieve Ahis](#How-To-Achieve-This)
+    * [Game Flow Chart](#Game-Flow-Chart)
+* [Features](#Features)
+    * [Welcome Screen](#Welcome-Screen)
+    * [Player name input](#Player-name-input)
+    * [Introduction](#Introduction)
+    * [Game Rules](#Game-Rules)
+    * [How Many Games To Play](#How-Many-Games-To-Play)
+    * [Game Load](#Game-Load)
+    * [Player Hand](#Player-Hand)
+    * [House Hand](#House_Hand)
+    * [Hand Values](#Hand-Values)
+    * [Hit, Stand or Quit](#Hit,-Stand-or-Quit)
+        * [Hit](#Hit)
+        * [Stand](#Stand)
+        * [Quit](#Quit)
+    * [Win Or Lose](#Win-Or-Lose)
+    * [Play Again](#Play-Again)
+    * [New Game](#New-Game)
+    * [Goodbye messages](#Goodbye-messages)
+* [Future Enhancement](#Future-Enhancement)
+* [Classes](#Classes)
+* [Testing](#Testing)
+    * [Manual Testing](#Manual-Testing)
+    * [Validators](#Validators)
+* [Imports Used](#Imports-Used)
+* [Bug Fixes](#Bug-Fixes)
+* [Deployment](#Deployment)
+* [Honorable Mentions](#Honorable-Mentions)
+* [Credits](#Credits)
     
     
 
 
 
 ## Overview
+
 ### How To Play
 
 *  First thing to do is to decide how many games you want to play
@@ -57,10 +58,11 @@ A Command-line game of BlackJack that users can play directly in the terminal. I
 *  Once you have your hand, your total value of hand will be calculated and ahown below your hand.
 *  You then need to decide to Hit or Stay using your hand value as an indicator of what to do.
 
-### How to win
+### How To Win
 
 The Aim is to get 21 or as close to it without going over.
 If your hand has a higher value than the House hand without being over 21, you win.
+
 ### User Stories
 
 As a user I want to be able to:
