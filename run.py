@@ -357,7 +357,7 @@ def welcome():
         clear()
         type_text(
             'Now we have that out the way, I just wanted to go over a \n'
-            'couple of things about the game before we continue'
+            'couple of things about the game before we continue.'
             '\n'
             '\n'
             'Firstly, Thank you for being here, '
@@ -368,7 +368,7 @@ def welcome():
             'upper case or lower case, the\n'
             'system will know exactly what you are trying to say.\n'
             'When you see a (Y/N), this means, '
-            'please answer with y for yes or n for no'
+            'please answer with y for yes or n for no.'
             '\n'
             '\n'
             'After any input you make, hitting the enter key will take \n'
@@ -377,7 +377,7 @@ def welcome():
             '\n'
             '\n'
             'So, grab your snacks, grab your drinks and let\'s play '
-            'some Blackjack'
+            'some Blackjack.'
             '\n'
             )
         sleep(1)
@@ -396,7 +396,7 @@ def game_rules():
             clear()
             type_text(
                 "The rules are simple, hit 21 and you win....\n"
-                "Well, unless the house has 21, then they win!\n"
+                "Well, unless the house has 21 as well, then they win!\n"
                 "Sorry, some rules suck and thats one of them.\n"
                 "That's it really..."
                 )
@@ -412,18 +412,18 @@ def game_rules():
             print()
             type_text(
                 "When prompted, let me know how many games "
-                "you'd like to play\n"
-                "You will then be dealt a hand containing 2 cards\n"
-                "It's the total value we are interested in\n"
+                "you'd like to play.\n"
+                "You will then be dealt a hand containing 2 cards.\n"
+                "It's the total value we are interested in.\n"
                 "Don't worry, I'll do the maths for you"
                 '\n'
                 '\n'
-                "Once you have your value of both your cards added together\n"
-                "It will be your decision to use Hit or Stand when prompted\n"
-                "Hit will deal you another card\n"
-                "Stand will submit your hand\n"
+                "Once you have your value of both your cards added together,\n"
+                "It will be your decision to use Hit or Stand when prompted.\n"
+                "Hit will deal you another card,\n"
+                "Stand will submit your hand.\n"
                 "As mentioned before, the aim is to get 21 or as close to "
-                "without going over\n"
+                "without going over.\n"
                 "So, be careful, if you get 22, you bust."
                 '\n'
                 '\n'
@@ -432,15 +432,15 @@ def game_rules():
             type_text(
                 '\n'
                 '\n'
-                "Rules regarding the house hand\n"
+                "Rules regarding the house hand:\n"
                 "If you bust by going over 21, "
-                "the house hand automatically wins\n"
-                "If the house hand has 17 or above they have to Stand\n"
+                "the house hand automatically wins.\n"
+                "If the house hand has 17 or above they have to Stand.\n"
                 "And if they have below 17 they have to Hit"
                 '\n'
                 '\n'
-                "Card values\n"
-                "Number cards have the value of the number on the card\n"
+                "Card values:\n"
+                "Number cards have the value of the number on the card.\n"
                 '\n'
                 "Example:\n3 of hearts \U00002665 = 3\n"
                 "9 of clubs \U00002663 = 9\n"
@@ -451,17 +451,17 @@ def game_rules():
                 '\n'
                 "Ace (A) is the wild card, "
                 "Ace can = 1 or 11\n"
-                "The value of Ace is dependant on if you have gone over 21\n"
+                "The value of Ace is dependant on if you have gone over 21.\n"
                 '\n'
                 "Example:\nAce + 5 of hearts \U00002665 = 16\n"
                 '\n'
-                "However, if you add another card with the value of 8\n"
+                "However, if you add another card with the value of 8,\n"
                 "The value would be 24 but the Ace would then be a 1\n"
                 "giving you a total value of 14 (Ace (1) + 5 + 8 = 14)"
                 '\n'
                 '\n'
                 "Got all that?\n"
-                "Just keep playing... you'll get it eventually"
+                "Just keep playing... you'll get it eventually!"
                 '\n'
                 '\n'
                 )
@@ -503,7 +503,7 @@ def play_again():
 
         if go_again == "y":
             clear()
-            type_text("Awesome, new game loading....")
+            type_text("Awesome, New Game Loading....")
             sleep(2)
             game_rules()
             run.games()
