@@ -190,7 +190,7 @@ Quit:
 
 ![Exit Game](/documentation/screenshots/exit-game.png)
 
-Continue where you left off:
+#### Continue where you left off:
 
 If no is selected, the player will just be able to continue with the game they were on before they entered quit.
 
@@ -244,15 +244,15 @@ I wanted to make my game a bit more appealing, which is why I decided to use a t
 
 There are a few things I would really like to add to this game in the future. Due to the nature of the course and having a deadline, this was not possible this time around.
 
-#### Score Tracking:
+#### Score Tracking:
 
 I would like to add the ability for the user to see how many games they won out of their chosen game amount.
 
-#### Game Area:
+#### Game Area:
 
 I would like to make a game area with the cards in the player's hand and the house's hand displayed the same as a normal playing card with the use of special characters.
 
-#### Audio:
+#### Audio:
 
 I would like to add sound effects for certain parts of the game. Such as card shuffling when a new game is dealt, an alert for hitting Blackjack, and a general win alert. On top of this, I'd like to have casino music playing in the background.
 ## Classes
@@ -268,17 +268,17 @@ For this project I used 4 different classes:
 
 I used a class Deck to store the 52 card values.Which then uses import random to shuffle the cards and retrieve thecards from the deck.
 
-#### CardType:
+#### Card Type:
 
 The CardType class is used to retrieve the suit and the value from the deck, which are then returned as a string for the main game area.
 
-#### CardsInHand:
+#### Cards In Hand:
 
 The CardsInHand class is used to extend the player's hand when the hit option is chosen.
 This also includes calculating the value of the hand and taking note that if the value is over 21 and the hand has an ace included, the game will automatically remove 10 from the total value to make the ace the value of 1.
 The class also creates the argument for keeping the House hand halfhidden until the hands are revealed at the end of the game.
 
-#### PlayGame:
+#### Play Game:
 
 The PlayGame class gets the player's input for the number of games to play, which will then be increased by 1 until the amount is reached. Each time this is run, the cards are reshuffled and a new hand is dealt.
 The class then gives it's next input for the player's decision to hit, stand or quit. Once all of these have run, the who wins function selects the appropriate print statement linked with the outcome of the game and prints both hands total value. 
