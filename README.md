@@ -50,8 +50,8 @@ A Command-line game of BlackJack that users can play directly in the terminal. I
 
 *  First thing to do is to decide how many games you want to play
 *  Your hand will be automatically dealt
-*  Once you have your hand, your total value of hand will be calculated and ahown below your hand.
-*  You then need to decide to Hit or Stay using your hand value as an indicator of what to do.
+*  Once you have your hand, your total value of hand will be calculated and shown below your hand.
+*  You then need to decide to Hit or Stand using your hand value as an indicator of what to do.
 
 ### How To Win
 
@@ -63,12 +63,13 @@ If your hand has a higher value than the House hand without being over 21, you w
 As a user I want to be able to:
 
 *  Create a username for my player
-*  Give introduction the game
+*  Rean an introduction to the game, explaining how everything works
 *  Be able to decide how many games to play
 *  View my hand with a calculated total value
 *  Read the rules
 *  Decide to play again after first set of games is finished
-*  Give a chooce to read rules after each game
+*  Have the choice to read rules after each game
+*  Exit the game without finishing
  
 ### Site Aims
 
@@ -83,11 +84,11 @@ The site aims are:
 
 To achieve all the above, the site will:
 
-1.  Give user the choice to read the rules and keep the choice available with every new game
-*  Supply a welcome and a small amount of information about the game and how to progress through 
-2.  Make sure that what ever the user inputs, the responsive is instructive
-3.  Give the user a choice to play again after their chosen amount of games end
-4.  Create a version of blackjack that has the same general rules and playstyle
+1.  Give user the choice to read the rules and keep the option available with every new game
+2.  Supply a welcome and a small amount of information about the game and how to progress through 
+3.  Make sure that what ever the user inputs, the responsive is instructive
+4.  Give the user a choice to play again after their chosen amount of games end
+5.  Create a version of Blackjack that has the same general rules and playstyle
 
 ### Game Flow Chart
 
@@ -98,23 +99,24 @@ I used a flow chart to work out the differnt steps to create the game. To build 
 
 ### Welcome Screen
 
-From the Welcome screen the player is prompted to tell me what they would like to be called.
+From the Welcome screen the player is greeted with a heading clearly stating what the game is and is prompted to enter what they would like to be called.
 
 ![Welcome screen](/documentation/screenshots/welcome-screen.png)
 
 ### Player name input
 
-The player is prompted to enter their name. The code is written to ensure the first letter of the name/names is capitalized. 
+The player is prompted to enter what they would like to be called. The code is written to ensure the first letter of the name/names is capitalized. 
 
 Error handling:
 *  The name can not be a simple space, characters must be added
-*  I have used the lower() inbuilt function to ensure any casing is excepted
+*  I have used the capitalized() inbuilt function to ensure the name has a capital letter at the beginning
+*  I have allowed numbers to be entered if people do not want to use their name 
 
 ![Name](/documentation/screenshots/name.png)
 
 ### Introduction
 
-Brief introduction and guidelines for navigating the game.
+Brief introduction and guidelines for navigating the game. Telling the user what to look out for at certain inputs.
 
 ![Introduction](/documentation/screenshots/introduction-page.png)
 
@@ -144,13 +146,13 @@ The game has emojis to reflect the suit of the card.
 
 ### Player Hand
 
-The player hand will have two visible values.
+The player hand will have two visible cards and a total value.
 
 ![Player Hand](/documentation/screenshots/player-hand.png)
 
 ### House Hand
 
-The house hand will have one visible value and one hidden value marked with a 'X'
+The house hand will have one visible card and one hidden value marked with a 'X'.
 
 ![House Hand](/documentation/screenshots/house-hand.png)
 
@@ -172,7 +174,7 @@ Error handling:
 #### Hit
 
 The hit descision will add another card to the hand and re calculate the value of the hand.
-The game is programmed to accept (h or hit) which is not case sensitive. The player can keep inputting hit until they either go over 21 and bust, have an exact value of 21 or are happy to stand with their value. 
+The game is programmed to accept (h or hit) which is not case sensitive. The player can keep inputting hit until they either go over 21 and bust, have an exact value of 21 or are happy to stand with their total value. 
 
 ![Hit](/documentation/screenshots/hit-example.png)
 
@@ -184,7 +186,7 @@ The stand descision will submit the players hand and calculate the winner of the
 
 #### Quit
 
-The player will have the option to quit each time they play a hand. A second prompt will follow, just to be sure they want to quit.
+The player will have the option to quit each time they play a hand. A second prompt will follow, just to be sure they want to quit and it's not accidental.
 
 Quit:
 
@@ -192,7 +194,7 @@ Quit:
 
 #### Continue where you left off:
 
-If no is selected, the player will just be able to continue with the game they were on before they entered quit.
+If no is selected, the player will just be able to continue with the game they were on before they entered quit or q.
 
 ![Continue Game](/documentation/screenshots/continue-game.png)
 
@@ -210,7 +212,7 @@ Loss:
 
 #### Play Again
 
-Once the all the selected games have been played, the player will be asked if they wish to play again.
+Once all the games have been played, the player will be asked if they wish to play again.
 
 Error handling:
 
@@ -238,7 +240,7 @@ When the player decides to leave the game a goodbye message is displayed.
 
 #### Typewritter Effect
 
-I wanted to make my game a bit more appealing, which is why I decided to use a typewriter effect on most of the text. I also believe this will help the players stay on track with the reading. Sometimes I find that when you are suddenly thrown into a huge lump of text, it can be easy to skim over it without really reading it. In my opinion, this helps with that problem.
+I wanted to make my game a bit more appealing, which is why I decided to use a typewriter effect on most of the text. I also believe this will help the player stay on track with the reading. Sometimes I find that when you are suddenly thrown into a huge lump of text, it can be easy to skim over it without really reading it. In my opinion, this helps with that problem.
 
 ## Future Enhancement
 
@@ -266,7 +268,7 @@ For this project I used 4 different classes:
 
 #### Deck:
 
-I used a class Deck to store the 52 card values.Which then uses import random to shuffle the cards and retrieve thecards from the deck.
+I used a class Deck to store the 52 card values. Which then uses import random to shuffle the cards and retrieve thecards from the deck.
 
 #### Card Type:
 
@@ -276,7 +278,7 @@ The CardType class is used to retrieve the suit and the value from the deck, whi
 
 The CardsInHand class is used to extend the player's hand when the hit option is chosen.
 This also includes calculating the value of the hand and taking note that if the value is over 21 and the hand has an ace included, the game will automatically remove 10 from the total value to make the ace the value of 1.
-The class also creates the argument for keeping the House hand halfhidden until the hands are revealed at the end of the game.
+The class also creates the argument for keeping the House hand half hidden until the hands are revealed at the end of the game.
 
 #### Play Game:
 
@@ -294,10 +296,10 @@ Throughout the whole process of the project, manual testing was being done const
 *  Checking the "problems" tab in the terminal and correcting them as I went along. Common problems where, white space at the end of a line over 80 characters.
 
 
-*  Running my game after small chunks of code to try and prevent being greated by an error.
+*  Running my game after a small chunks of code to try and prevent being greated by an error and have to filter back through a larger amount of code.
 
 
-*  Constantly running my game to check all inputs run in the correct way or return the correct prompts.
+*  Constantly running my game to check all inputs run in the correct way or return the correct prompts if an incorrect value is inputted.
 
 
 *  Lastly, constantly playing the game to be sure it's running in the correct way and none of the recent changes made have impacted the game in a bad way.
@@ -308,7 +310,7 @@ Throughout the whole process of the project, manual testing was being done const
 
 #### HTML:
 
-I used the [HTML validator](https://validator.w3.org/) as I adjusted the background of the Code Institute template.
+I used the [HTML validator](https://validator.w3.org/) as I adjusted the background of the Code Institute template. All tests passed with no errors.
 
 ![HTML Validator](documentation/testing/html-validator.png)
 
@@ -340,19 +342,15 @@ I used [Python validator](https://pep8ci.herokuapp.com/) to check my python code
 ## Bug and Fixes
 
 1. I had a bug that caused the game to produce an error once the calculation process was being called.
-The error message was "Unexpected indent" and I was given a line number for the error.
+The error message was "Unexpected indent" and I was given a line number forthe error.
 
-Solution - The line number I was given by the error was actually the line below where the error was actually being cause. I had previously removed an "if" statement but not the "if" part. I wasn't giving the "if" statement anything to do, causing an indentation error on the line below.
-
+Solution - The line number I was given by the error was actually the line below where the error was actually being caused. I had previously removed an "if" statement but not the "if" part. I wasn't giving the "if" statement anything to do, causing an indentation error on the line below.
 
 2. After making a "while loop" for the quit game option, I caused an infinite loop.
 
-
 Solution - I had set the "no" option for quitting the game to "continue" instead of "break", causing the loop to keep running over and over.
 
-
-3. I had the game running, but it wasn't running correctly. When the game was over and the winner was being checked. The game would produce inconsistent results, with the house being the winner when it shouldn't have been.
-
+3. I had the game running, but it wasn't running correctly. When the game was over and the winner was being checked. The game would produce inconsistent results, with the house being the winner when it shouldn't have been.
 
 Solution - In the who wins function, I had used the "get hand value" function with the player hand and house hand variables.
 This should have been calling the "Total" function with the hand variables. Once fixed, the game ran smoothly as intended.  
@@ -375,7 +373,7 @@ Before the final deployment to Heroku, I had to follow a couple of steps from Co
 4.  You then need to choose your region, as I'm in the UK I chose Europe
 5.  Then click the "Create app" button
 6.  This will bring you to the deploy tab, from here head over to the settings tab within the same line of tabs as the deploy
-7.  click the button named "Reveal Config Vars" and in the "Key" input - PORT then in the "Value" imput - 8000
+7.  Click the button named "Reveal Config Vars" and in the "Key" input - PORT then in the "Value" imput - 8000
 8.  Then click the "add" button 
 9.  Scroll down to the "Buildpack" section and click "Add Buildpack"
 10.  First select the "Python" option and click save changes
@@ -393,11 +391,9 @@ Before the final deployment to Heroku, I had to follow a couple of steps from Co
 
 *  David Bowers - David has been a huge help throughout this project. The guidance and support he has given me is massively appreciated. All of the meetings I had with David were a pleasure to be part of.
 
-
 *  Tutor support - Always reliable and quick to respond, it's always great to have them to reach out to.
 
-
-*  My Family - As always, thanking my family is important. Over the last month, my head has been inside my laptop trying to understand and learn Python, but as always, they understand it's what needs to be done and they fully support it.
+*  My Family - As always, thanking my family is important. Over the last month, my head has been inside my laptop trying to understand and learn Python. As always, they understand it's what needs to be done and they fully support it.
 
 ## Credits
 
