@@ -1,5 +1,7 @@
 # BlackJack
 
+## Overview
+
 A Command-line game of BlackJack that users can play directly in the terminal. It's not the usual style of BlackJack people are used to playing but it has exactly the same outline.
 
 [Click here to view the final deployment](https://blackjack--21-799b0dacef4d.herokuapp.com/)
@@ -44,12 +46,7 @@ A Command-line game of BlackJack that users can play directly in the terminal. I
 * [Deployment](#Deployment)
 * [Honorable Mentions](#Honorable-Mentions)
 * [Credits](#Credits)
-    
-    
 
-
-
-## Overview
 
 ### How To Play
 
